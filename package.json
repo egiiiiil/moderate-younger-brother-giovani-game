@@ -1,22 +1,24 @@
 {
-  "name": "moderate-younger-brother-giovani-game",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/egiiiiil/moderate-younger-brother-giovani-game.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/egiiiiil/moderate-younger-brother-giovani-game/issues"
-  },
-  "homepage": "https://github.com/egiiiiil/moderate-younger-brother-giovani-game#readme",
-  "dependencies": {
-    "phaser": "^3.55.2"
-  }
+	"name": "moderate-younger-brother-giovani-game",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "parcel src/index.html -p 8000",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/egiiiiil/moderate-younger-brother-giovani-game.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/egiiiiil/moderate-younger-brother-giovani-game/issues"
+	},
+	"homepage": "https://github.com/egiiiiil/moderate-younger-brother-giovani-game#readme",
+	"dependencies": {
+		"parcel-bundler": "^1.12.5",
+		"phaser": "^3.55.2"
+	}
 }
