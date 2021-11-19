@@ -1,118 +1,69 @@
-import Phaser from "phaser";
+import Phaser from 'phaser';
+import background from './img/bg.png';
+import ground from './img/ground.png';
+import giovanni from './img/standing-g-s.png';
 
-
-let center,
-	text,
-	ball,
-	player1,
-	player2,
-	player1Controls,
-	player2Controls,
-	startGame;
-let pointPlayer1 = 0;
-let pointPlayer2 = 0;
+let groundGame,
+		giovanniPlayer,
+		giovanniControls, 
+		timer;
 
 class Giovanni extends Phaser.Scene {
 	preload() {
-		// what assets does the game need
-		this.load.image("ball", "./ball.png");
-		this.load.image("player", "./player.png");
+		this.load.image("background", background);
+		this.load.image("ground", ground);
+		this.load.image("giovanni", giovanni);
 	}
 
 	create() {
-		//applying physics to game elements, setting bounds and parameters to games, setting up controls etc
-		center = {
-			x: this.physics.world.bounds.width / 2,
-			y: this.physics.world.bounds.height / 2,
-		};
-
-		ball = this.physics.add.sprite(center.x, center.y, "ball");
-		ball.setCollideWorldBounds(true);
-		ball.setBounce(1);
-
-		player1 = this.physics.add.sprite(10, center.y, "player");
-		player1.setScale(0.5);
-		player1.setCollideWorldBounds(true);
-		player1.setImmovable(true);
-		player1Controls = this.input.keyboard.createCursorKeys();
-
-		player2 = this.physics.add.sprite(center.x * 2 - 10, center.y, "player");
-		player2.setScale(0.5);
-		player2.setCollideWorldBounds(true);
-		player2.setImmovable(true);
-
-		player2Controls = this.input.keyboard.addKeys({
-			up: Phaser.Input.Keyboard.KeyCodes.W,
-			down: Phaser.Input.Keyboard.KeyCodes.S,
-		});
-
-		text = this.add.text(center.x, 10, pointPlayer2 + " - " + pointPlayer1, {
+		this.add.image(400, 400, "background")
+		groundGame = this.physics.add.staticSprite(400, 400, "ground");
+		giovanniPlayer = this.physics.add.sprite(400, 250, "giovanni");
+		giovanniControls = this.input.keyboard.createCursorKeys();
+		timer = this.add.text(10, 10, '00000', {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 50,
+			color: "black",
 		});
-		text.setOrigin(0.5, 0);
-		this.physics.world.checkCollision.left = false;
-		this.physics.world.checkCollision.right = false;
+		
 	}
 
 	update() {
-		//setting up functions for functionality of the game
-		if (player1Controls.space.isDown) {
-			startGame = true;
-			ball.setVelocityX(-100);
+		if (this.physics.world.collide(giovanniPlayer, [groundGame])) {
+			
+			if (giovanniControls.left.isDown) {
+				giovanniPlayer.setVelocity(-200, 0);
+				giovanniPlayer.flipX = true;
+			} 
+			else if (giovanniControls.right.isDown) {
+				giovanniPlayer.setVelocity(200, 0);
+				giovanniPlayer.flipX = false;
+			} 
+			else if (giovanniControls.left.isDown && giovanniControls.space.isDown) {
+				giovanniPlayer.setVelocity(-200, -200);
+				giovanniPlayer.flipX = true;
+			}
+			else if (giovanniControls.right.isDown && giovanniControls.space.isDown) {
+				giovanniPlayer.setVelocity(200, -200);
+				giovanniPlayer.flipX = true;
+			}
+			else if (giovanniControls.space.isDown) {
+				giovanniPlayer.setVelocity(0, -150);
+			}
+			else {
+				giovanniPlayer.setVelocityX(0);
+			}
 		}
+		
 
-		if (startGame) {
-			this.physics.add.collider(player1, ball, bounce, null, this);
-			this.physics.add.collider(player2, ball, bounce, null, this);
-			point(this.physics.world);
-			if (player1Controls.up.isDown) {
-				player1.setVelocity(0, -200);
-			}
-			if (player1Controls.down.isDown) {
-				player1.setVelocity(0, 200);
-			}
-			if (player2Controls.up.isDown) {
-				player2.setVelocity(0, -200);
-			}
-			if (player2Controls.down.isDown) {
-				player2.setVelocity(0, 200);
-			}
-		}
 
-		console.log("update");
-	}
-}
-function point(world) {
-	if (ball.x < 0) {
-		pointPlayer1 = pointPlayer1 + 1;
-		resetGame();
-	}
-	if (ball.x > center.x * 2) {
-		pointPlayer2 = pointPlayer2 + 1;
-		resetGame();
+
+
+
+
+
+
 	}
 }
 
-function resetGame() {
-	ball.setVelocity(0);
-	text.setText(pointPlayer2 + " - " + pointPlayer1);
-	ball.setPosition(center.x, center.y);
-	player1.setVelocity(0);
-	player2.setVelocity(0);
-	player1.setPosition(10, center.y);
-	player2.setPosition(center.x * 2 - 10, center.y);
-	startGame = false;
-}
-
-function bounce(player, ball) {
-	if (ball.body.velocity.x < 500) {
-		ball.setVelocityX(ball.body.velocity.x * 1.2);
-	}
-	if (ball.y < player.y) {
-		ball.setVelocityY(ball.body.velocity.y + 70);
-	} else {
-		ball.setVelocityY(ball.body.velocity.y - 70);
-	}
-}
 export default Giovanni;
