@@ -1,3 +1,6 @@
+import Phaser from "phaser";
+
+
 let center,
 	text,
 	ball,
