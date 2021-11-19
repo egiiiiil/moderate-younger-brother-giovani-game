@@ -1,9 +1,16 @@
-import Phaser from "phaser";
+import Giovanni from "./Giovanni.js";
 
-const config = {
+var config = {
+	type: Phaser.AUTO,
 	width: 800,
 	height: 500,
-	type: Phaser.AUTO,
-}
+	scene: [Giovanni],
+	physics: {
+		default: "arcade",
+		arcade: {
+			gravity: false,
+		},
+	},
+};
 
-const game = new Phaser.Game(config)
+new Phaser.Game(config)
