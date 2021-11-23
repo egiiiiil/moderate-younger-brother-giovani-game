@@ -67,16 +67,29 @@ class Giovanni extends Phaser.Scene {
       frameRate: 10,
       repeat: 0,
     });
+		this.anims.create({
+      key: "giovaniAnimation",
+      frames: [
+        { key: "runninggiovanni", frame: "runningG1.png" },
+        { key: "runninggiovanni", frame: "runningG2.png" },
+        { key: "runninggiovanni", frame: "runningG3.png" },
+      ],
+      frameRate: 10,
+      repeat: 0,
+    });
   }
 
 	update() {
 		if (giovanniControls.left.isDown) {
 				giovanniPlayer.setVelocity(-200, 0);
 				giovanniPlayer.flipX = true;
+				giovanniPlayer.anims.play("giovaniAnimation", true);
 			} 
 			else if (giovanniControls.right.isDown) {
 				giovanniPlayer.setVelocity(200, 0);
 				giovanniPlayer.flipX = false;
+				giovanniPlayer.anims.play("giovaniAnimation", true);
+
 			} 
 			else if (giovanniControls.left.isDown && giovanniControls.space.isDown) {
 				giovanniPlayer.setVelocity(-200, -200);
@@ -94,14 +107,6 @@ class Giovanni extends Phaser.Scene {
 			}
 			coins.anims.play("coinsAnimation", true);
 		}
-		
-
-
-
-
-		
-
-
 
 }
 
