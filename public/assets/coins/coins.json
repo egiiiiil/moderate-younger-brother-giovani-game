@@ -1,7 +1,7 @@
 {
 	"textures": [
 		{
-			"image": "coins-0.png",
+			"image": "coins.png",
 			"format": "RGBA8888",
 			"size": {
 				"w": 2048,
@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "New Piskel-1.png.png",
+					"filename": "coins00.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "New Piskel-2.png.png",
+					"filename": "coins01.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "New Piskel-3.png.png",
+					"filename": "coins02.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "New Piskel-4.png.png",
+					"filename": "coins03.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
