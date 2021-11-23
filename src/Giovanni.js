@@ -53,9 +53,6 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.collider(coins, groundGame);
 		/* 		this.physics.world.collide(giovanniPlayer, [groundGame])
 		this.physics.world.collide(coins, [groundGame]) */
-	}
-	
-
 		this.physics.add.collider(giovanniPlayer, groundGame)
 		this.physics.add.collider(coins, groundGame)
 		this.anims.create({
@@ -85,6 +82,10 @@ class Giovanni extends Phaser.Scene {
 		this.cameras.main.startFollow(giovanniPlayer);
   }
 
+	
+
+
+
 	update() {
 		if (giovanniControls.left.isDown) {
 			giovanniPlayer.setVelocityX(-200);
@@ -100,11 +101,9 @@ class Giovanni extends Phaser.Scene {
 		if (giovanniPlayer.body.touching.down && giovanniControls.space.isDown) {
 			giovanniPlayer.setVelocityY(-225);
 		}
-	}
+
   coins.anims.play("coinsAnimation", true);
 	}
-
 }
-
 export default Giovanni;
 
