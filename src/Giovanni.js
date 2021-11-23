@@ -1,13 +1,8 @@
-import Phaser from 'phaser';
+import Phaser from "phaser";
 /* import background from './bg.png'; */
 /* import ground from '../img/ground.png'; */
 
-
-let groundGame,
-		giovanniPlayer,
-		giovanniControls, 
-		timer,
-		coins;
+let groundGame, giovanniPlayer, giovanniControls, timer, coins;
 
 class Giovanni extends Phaser.Scene {
 	constructor() {
@@ -17,16 +12,15 @@ class Giovanni extends Phaser.Scene {
 		this.load.image("background", "./assets/bg.png");
 		this.load.image("ground", "./assets/ground.png");
 		this.load.multiatlas(
-      "runninggiovanni",
-      "./assets/runninggiovanni/running.json",
-      "./assets/runninggiovanni"
-    );
+			"runninggiovanni",
+			"./assets/runninggiovanni/running.json",
+			"./assets/runninggiovanni"
+		);
 		this.load.multiatlas(
 			"coins",
 			"./assets/coins/coins.json",
 			"./assets/coins"
-		)
-		
+		);
 	}
 
 	create() {
@@ -54,6 +48,14 @@ class Giovanni extends Phaser.Scene {
 			fontSize: 50,
 			color: "black",
 		});
+
+		this.physics.add.collider(giovanniPlayer, groundGame);
+		this.physics.add.collider(coins, groundGame);
+		/* 		this.physics.world.collide(giovanniPlayer, [groundGame])
+		this.physics.world.collide(coins, [groundGame]) */
+	}
+	
+
 		this.physics.add.collider(giovanniPlayer, groundGame)
 		this.physics.add.collider(coins, groundGame)
 		this.anims.create({
@@ -85,31 +87,21 @@ class Giovanni extends Phaser.Scene {
 
 	update() {
 		if (giovanniControls.left.isDown) {
-				giovanniPlayer.setVelocity(-200, 0);
-				giovanniPlayer.flipX = true;
-				giovanniPlayer.anims.play("giovaniAnimation", true);
-		} 
-		else if (giovanniControls.right.isDown) {
-			giovanniPlayer.setVelocity(200, 0);
+			giovanniPlayer.setVelocityX(-200);
+			giovanniPlayer.flipX = true;
+      giovanniPlayer.anims.play("giovaniAnimation", true);
+		} else if (giovanniControls.right.isDown) {
+			giovanniPlayer.setVelocityX(200);
 			giovanniPlayer.flipX = false;
-			giovanniPlayer.anims.play("giovaniAnimation", true);
-
-		} 
-		else if (giovanniControls.left.isDown && giovanniControls.space.isDown) {
-			giovanniPlayer.setVelocity(-200, -200);
-			giovanniPlayer.flipX = true;
-		}
-		else if (giovanniControls.right.isDown && giovanniControls.space.isDown) {
-			giovanniPlayer.setVelocity(200, -200);
-			giovanniPlayer.flipX = true;
-		}
-		else if (giovanniPlayer.body.touching.down && giovanniControls.space.isDown) {
-			giovanniPlayer.setVelocity(0, -150);
-		}
-		else {
+      giovanniPlayer.anims.play("giovaniAnimation", true);
+		} else {
 			giovanniPlayer.setVelocityX(0);
 		}
-		coins.anims.play("coinsAnimation", true);
+		if (giovanniPlayer.body.touching.down && giovanniControls.space.isDown) {
+			giovanniPlayer.setVelocityY(-225);
+		}
+	}
+  coins.anims.play("coinsAnimation", true);
 	}
 
 }
