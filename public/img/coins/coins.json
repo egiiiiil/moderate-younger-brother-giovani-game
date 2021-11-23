@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "coins-0.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 2048,
+				"h": 2048
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "New Piskel-1.png.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1024,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1024,
+						"h": 1024
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 1024,
+						"h": 1024
+					}
+				},
+				{
+					"filename": "New Piskel-2.png.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1024,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1024,
+						"h": 1024
+					},
+					"frame": {
+						"x": 1024,
+						"y": 0,
+						"w": 1024,
+						"h": 1024
+					}
+				},
+				{
+					"filename": "New Piskel-3.png.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1024,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1024,
+						"h": 1024
+					},
+					"frame": {
+						"x": 0,
+						"y": 1024,
+						"w": 1024,
+						"h": 1024
+					}
+				},
+				{
+					"filename": "New Piskel-4.png.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1024,
+						"h": 1024
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1024,
+						"h": 1024
+					},
+					"frame": {
+						"x": 1024,
+						"y": 1024,
+						"w": 1024,
+						"h": 1024
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:c49068676e2f8dee9e20be052cac1d58:c88973a7bb0795fe71eeb64610dcec14:b0c4f478716fad04e98c5fe07ea39ff5$"
+	}
+}
