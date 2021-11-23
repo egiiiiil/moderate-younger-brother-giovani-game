@@ -29,6 +29,7 @@ class Giovanni extends Phaser.Scene {
 	create() {
 		this.add.image(400, 400, "background");	
     groundGame = this.physics.add.staticSprite(400, 400, "ground");
+		groundGame.setOrigin(0, 0.5)
     giovanniPlayer = this.physics.add.sprite(
 			30,
       290,
@@ -77,6 +78,8 @@ class Giovanni extends Phaser.Scene {
       frameRate: 10,
       repeat: 0,
     });
+		this.cameras.main.setBounds(0, 0, 7000, 600);
+		this.cameras.main.startFollow(giovanniPlayer);
   }
 
 	update() {
