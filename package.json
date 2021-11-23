@@ -4,11 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel ./src/index.html",
-    "build": "parcel build src/index.html --public-url ./ --no-source-maps",
-    "watch": "parcel watch src/index.html",
-    "postbuild": "ncp ./public ./dist --filter '**/*.*'",
-    "start": "parcel serve ./src/index.html"
+    "start": "parcel src/index.html -p 8000",
+    "build": "parcel build src/index.html --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,13 +18,24 @@
     "url": "https://github.com/egiiiiil/moderate-younger-brother-giovani-game/issues"
   },
   "homepage": "https://github.com/egiiiiil/moderate-younger-brother-giovani-game#readme",
-  "dependencies": {
-    "img": "^3.0.3",
-    "parcel-bundler": "^1.12.5",
-    "phaser": "^3.55.2",
-    "scr": "^1.0.0"
-  },
   "devDependencies": {
-    "ncp": "2.0.0"
+    "@babel/core": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "minimist": ">=1.2.2",
+    "parcel-plugin-clean-easy": "^1.0.2",
+    "parcel-plugin-static-files-copy": "^2.4.3"
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.5",
+    "phaser": "^3.55.2"
+  },
+  "parcelCleanPaths": [
+    "dist"
+  ],
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
   }
 }
