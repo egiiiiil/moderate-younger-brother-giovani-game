@@ -54,6 +54,19 @@ class Giovanni extends Phaser.Scene {
 			this.physics.add.collider(coins, groundGame)
 /* 		this.physics.world.collide(giovanniPlayer, [groundGame])
 		this.physics.world.collide(coins, [groundGame]) */
+		this.anims.create({
+      key: "coinsAnimation",
+      frames: [
+        { key: "coins", frame: "coins00.png" },
+        { key: "coins", frame: "coins01.png" },
+        { key: "coins", frame: "coins02.png" },
+        { key: "coins", frame: "coins03.png" },
+				{ key: "coins", frame: "coins02.png" },
+				{ key: "coins", frame: "coins01.png" },
+      ],
+      frameRate: 10,
+      repeat: 0,
+    });
   }
 
 	update() {
@@ -79,13 +92,14 @@ class Giovanni extends Phaser.Scene {
 			else {
 				giovanniPlayer.setVelocityX(0);
 			}
+			coins.anims.play("coinsAnimation", true);
 		}
 		
 
 
 
 
-
+		
 
 
 
