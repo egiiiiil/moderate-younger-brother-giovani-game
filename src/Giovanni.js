@@ -23,8 +23,8 @@ class Giovanni extends Phaser.Scene {
 			this.add.image(400, 400, "background");		
     groundGame = this.physics.add.staticSprite(400, 400, "ground");
     giovanniPlayer = this.physics.add.sprite(
-      30,
-      320,
+      10,
+      10,
       "runninggiovanni",
       "runningG2.png"
     );
@@ -57,7 +57,7 @@ class Giovanni extends Phaser.Scene {
 				giovanniPlayer.flipX = true;
 			}
 			else if (giovanniControls.space.isDown) {
-				giovanniPlayer.setVelocity(0, -250);
+				giovanniPlayer.setVelocity(0, -150);
 			}
 			else {
 				giovanniPlayer.setVelocityX(0);
