@@ -9,7 +9,8 @@ export default class TitleScene extends Phaser.Scene {
 
 	}
 	create() {
-		this.add.text(0, 0, "Press any key to start")
+		this.add.text(5, 5, "Moderate Younger Brother Giovani Game")
+		this.add.text(5, 20, "Press any key to start")
 		this.input.keyboard.on('keydown', () => {
 			this.scene.add("Giovanni", Giovanni, true)
 			this.scene.remove("TitleScene")
