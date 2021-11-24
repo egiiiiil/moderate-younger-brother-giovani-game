@@ -9,7 +9,7 @@ class Giovanni extends Phaser.Scene {
 		super({key: "GiovanniGame"})
 	}
 	preload() {
-		this.load.image("background", "./assets/bg.png");
+		this.load.image('bg', './assets/bg.png')
 		this.load.image("ground", "./assets/ground.png");
 		this.load.multiatlas(
 			"runninggiovanni",
@@ -24,7 +24,8 @@ class Giovanni extends Phaser.Scene {
 	}
 
 	create() {
-		this.add.image(400, 400, "background");	
+		let bg = this.add.image(0, 0, 'bg')
+		bg.setScale(0.8)
     groundGame = this.physics.add.staticSprite(400, 400, "ground");
 		groundGame.setOrigin(0, 0.5)
     giovanniPlayer = this.physics.add.sprite(
