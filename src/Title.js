@@ -1,8 +1,10 @@
-import Phaser from "phaser"
-import Giovanni from "./Giovanni.js"
+import Phaser from "phaser";
+import Giovanni from "./Giovanni.js";
+import Highscore from "./HighscorePage.js";
 
 export default class TitleScene extends Phaser.Scene {
 	constructor() {
+
 		super({key: "TitleScene"})
 	}
 	preload() {
@@ -14,6 +16,7 @@ export default class TitleScene extends Phaser.Scene {
 
 
 		this.load.image('bg', './assets/bg.png')
+
 		this.load.image("ground", "./assets/ground.png");
 		this.load.multiatlas(
 			"runninggiovanni",
