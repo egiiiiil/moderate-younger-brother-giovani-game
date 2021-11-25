@@ -1,33 +1,39 @@
 import Phaser from "phaser";
+import { Tile } from "phaser/src/tilemaps";
 /* import background from './bg.png'; */
 /* import ground from '../img/ground.png'; */
 
-let groundGame, giovanniPlayer, giovanniControls, timer, coins;
+let giovanniPlayer, 
+		giovanniControls, 
+		timer, 
+		coins, 
+		bg, 
+		level1, 
+		level2;
 
 class Giovanni extends Phaser.Scene {
 	constructor() {
 		super({key: "GiovanniGame"})
 	}
 	preload() {
-		this.load.image('bg', './assets/bg.png')
-		this.load.image("ground", "./assets/ground.png");
-		this.load.multiatlas(
-			"runninggiovanni",
-			"./assets/runninggiovanni/running.json",
-			"./assets/runninggiovanni"
-		);
-		this.load.multiatlas(
-			"coins",
-			"./assets/coins/coins.json",
-			"./assets/coins"
-		);
+
 	}
 
 	create() {
-		let bg = this.add.image(0, 0, 'bg')
+		bg = this.add.image(0, 0, 'bg')
 		bg.setScale(0.8)
-    groundGame = this.physics.add.staticSprite(400, 400, "ground");
-		groundGame.setOrigin(0, 0.5)
+
+		level1 = this.add.tileSprite(-5, 560, 200, 400, 'tile');
+		this.physics.add.existing(level1)
+		level1.body.setImmovable(true)
+		level1.body.moves = false;
+
+		level2 = this.add.tileSprite(300, 560, 500, 400, 'tile');
+		this.physics.add.existing(level2)
+		level2.body.setImmovable(true)
+		level2.body.moves = false;
+    /* groundGame = this.physics.add.staticSprite(-5, 460, "ground"); */
+		/* groundGame.setOrigin(0, 0.5) */
     giovanniPlayer = this.physics.add.sprite(
 			30,
       290,
@@ -37,25 +43,40 @@ class Giovanni extends Phaser.Scene {
 		giovanniPlayer.setScale(0.05)
 		giovanniControls = this.input.keyboard.createCursorKeys();
 			
-		coins = this.physics.add.sprite(
+/* 		coins = this.physics.add.sprite(
 			60,
-			300,
+			290,
 			"coins",
 			"coins00.png"
 		);
-		coins.setScale(0.04)
-		timer = this.add.text(10, 10, "00000", {
+		coins.setScale(0.04) */
+
+
+
+		coins = this.add.group();
+
+    for (var i = 0; i <= 2; i++)
+    {
+        //  This creates a new Phaser.Sprite instance within the group
+        //  It will be randomly placed within the world and use the 'baddie' image to display
+        coins.create(360 + Math.random() * 200, 120 + Math.random() * 200, 'coins');
+				//coins.setScale(0.04)
+    }
+
+
+		timer = this.add.text(30, 100, "00000", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-			fontSize: 50,
+			fontSize: 20,
 			color: "black",
 		});
 
-		this.physics.add.collider(giovanniPlayer, groundGame);
-		this.physics.add.collider(coins, groundGame);
+		this.physics.add.collider(giovanniPlayer, level1);
+		this.physics.add.collider(giovanniPlayer, level2);
+		/* this.physics.add.collider(giovanniPlayer, groundGame); */
+		this.physics.add.collider(coins, level1);
+		this.physics.add.collider(coins, level2);
 		/* 		this.physics.world.collide(giovanniPlayer, [groundGame])
 		this.physics.world.collide(coins, [groundGame]) */
-		this.physics.add.collider(giovanniPlayer, groundGame)
-		this.physics.add.collider(coins, groundGame)
 		this.anims.create({
       key: "coinsAnimation",
       frames: [
@@ -102,8 +123,7 @@ class Giovanni extends Phaser.Scene {
 		if (giovanniPlayer.body.touching.down && giovanniControls.space.isDown) {
 			giovanniPlayer.setVelocityY(-225);
 		}
-
-  coins.anims.play("coinsAnimation", true);
+  //coins.anims.play("coinsAnimation", true);
 	}
 }
 export default Giovanni;
