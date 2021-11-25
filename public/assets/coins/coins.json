@@ -1,96 +1,96 @@
 {
 	"textures": [
 		{
-			"image": "coins.png",
+			"image": "jumping-0.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 2048,
-				"h": 2048
+				"w": 41,
+				"h": 29
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "coins00.png",
+					"filename": "New Piskel-1.png.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 32,
+						"h": 32
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1024,
-						"h": 1024
+						"x": 5,
+						"y": 1,
+						"w": 22,
+						"h": 29
 					},
 					"frame": {
 						"x": 0,
 						"y": 0,
-						"w": 1024,
-						"h": 1024
+						"w": 22,
+						"h": 29
 					}
 				},
 				{
-					"filename": "coins01.png",
+					"filename": "New Piskel-2.png.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 32,
+						"h": 32
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1024,
-						"h": 1024
+						"x": 10,
+						"y": 1,
+						"w": 11,
+						"h": 29
 					},
 					"frame": {
-						"x": 1024,
+						"x": 22,
 						"y": 0,
-						"w": 1024,
-						"h": 1024
+						"w": 11,
+						"h": 29
 					}
 				},
 				{
-					"filename": "coins02.png",
+					"filename": "New Piskel-3.png.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 32,
+						"h": 32
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1024,
-						"h": 1024
+						"x": 13,
+						"y": 1,
+						"w": 5,
+						"h": 29
 					},
 					"frame": {
-						"x": 0,
-						"y": 1024,
-						"w": 1024,
-						"h": 1024
+						"x": 33,
+						"y": 0,
+						"w": 5,
+						"h": 29
 					}
 				},
 				{
-					"filename": "coins03.png",
+					"filename": "New Piskel-4.png.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 32,
+						"h": 32
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 1024,
-						"h": 1024
+						"x": 14,
+						"y": 1,
+						"w": 3,
+						"h": 29
 					},
 					"frame": {
-						"x": 1024,
-						"y": 1024,
-						"w": 1024,
-						"h": 1024
+						"x": 38,
+						"y": 0,
+						"w": 3,
+						"h": 29
 					}
 				}
 			]
@@ -99,6 +99,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:c49068676e2f8dee9e20be052cac1d58:c88973a7bb0795fe71eeb64610dcec14:b0c4f478716fad04e98c5fe07ea39ff5$"
+		"smartupdate": "$TexturePacker:SmartUpdate:d58df4092b0b099872a8097e911dbcc2:07a0e636cd527748beea59d95e1e8c79:36eef4fb74e965675512d2f7fa00c8cf$"
 	}
 }
