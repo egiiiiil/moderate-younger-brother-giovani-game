@@ -1,5 +1,5 @@
 import Phaser, { Game } from "phaser";
-
+/* 
 //score and highscore variables
 var score = 0;
 Game.add.text(30, 20, "SCORE:", {
@@ -18,7 +18,7 @@ highScoreText = this.game.add.text(
 	"Highscore: " + highscore,
 	{ font: "bold 20px Lato", fill: "#fff", align: "center" }
 );
-
+ */
 // export default class Highscore extends Phaser.Scene {
 // 	constructor() {
 // 		super({ key: "Highscore", active: true });

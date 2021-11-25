@@ -17,18 +17,6 @@ export default class TitleScene extends Phaser.Scene {
 
 		this.load.image('bg', './assets/bg.png')
 
-		this.load.image("ground", "./assets/ground.png");
-		this.load.multiatlas(
-			"runninggiovanni",
-			"./assets/runninggiovanni/running.json",
-			"./assets/runninggiovanni"
-		);
-		this.load.multiatlas(
-			"coins",
-			"./assets/coins/coins.json",
-			"./assets/coins"
-		);
-		this.load.image('tile', './assets/tile/tile.png')
 	}
 	create() {
 

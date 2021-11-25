@@ -17,6 +17,18 @@ class Giovanni extends Phaser.Scene {
 	}
 	preload() {
 
+		this.load.image("ground", "./assets/ground.png");
+		this.load.multiatlas(
+			"runninggiovanni",
+			"./assets/runninggiovanni/running.json",
+			"./assets/runninggiovanni"
+		);
+		this.load.multiatlas(
+			"coins",
+			"./assets/coins/coins.json",
+			"./assets/coins"
+		);
+		this.load.image('tile', './assets/tile/tile.png')
 	}
 
 	create() {
