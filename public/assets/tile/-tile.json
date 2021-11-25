@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "tile.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 76,
+				"h": 19
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "left-corner.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 17,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 17,
+						"h": 17
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 17,
+						"h": 17
+					}
+				},
+				{
+					"filename": "middle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 17,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 17,
+						"h": 17
+					},
+					"frame": {
+						"x": 20,
+						"y": 1,
+						"w": 17,
+						"h": 17
+					}
+				},
+				{
+					"filename": "right-corner.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 17,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 17,
+						"h": 17
+					},
+					"frame": {
+						"x": 39,
+						"y": 1,
+						"w": 17,
+						"h": 17
+					}
+				},
+				{
+					"filename": "top-line.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 17,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 17,
+						"h": 17
+					},
+					"frame": {
+						"x": 58,
+						"y": 1,
+						"w": 17,
+						"h": 17
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:8dc3bf1d3abfc024fae90dca8ca84d6f:3638c1cc4c35b00ec99b4f47a7e83b17:3fc5630543b79be9d9cd5b563671216c$"
+	}
+}
