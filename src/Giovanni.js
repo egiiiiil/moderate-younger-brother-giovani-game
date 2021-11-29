@@ -138,17 +138,16 @@ class Giovanni extends Phaser.Scene {
 		);
 		coins.setScale(0.04) */
 
-		coins = this.add.group();
-
-		for (var i = 0; i <= 2; i++) {
-			//  This creates a new Phaser.Sprite instance within the group
-			//  It will be randomly placed within the world and use the 'baddie' image to display
-			coins.create(
-				360 + Math.random() * 200,
-				120 + Math.random() * 200,
-				"coins"
+		for (let i = 0; i <= 99; i++) {
+			coins = this.physics.add.sprite(
+				(220 + ( i * 10 )),
+				280,
+				"coins",
+				"coins00.png"
 			);
-			//coins.setScale(0.04)
+			coins.setScale(1)
+			coins.body.moves = false;
+			console.log(coins)
 		}
 
 		coins = this.physics.add.sprite(60, 300, "coins", "coins00.png");
