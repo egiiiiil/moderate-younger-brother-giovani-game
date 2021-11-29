@@ -7,9 +7,8 @@ let giovanniPlayer,
 		giovanniControls, 
 		timer, 
 		coins, 
-		bg, 
-		level1, 
-		level2;
+		bg
+
 
 class Giovanni extends Phaser.Scene {
 	constructor() {
@@ -35,17 +34,46 @@ class Giovanni extends Phaser.Scene {
 		bg = this.add.image(0, 0, 'bg')
 		bg.setScale(0.8)
 
-		level1 = this.add.tileSprite(-5, 560, 200, 400, 'tile');
-		this.physics.add.existing(level1)
-		level1.body.setImmovable(true)
-		level1.body.moves = false;
+		let ground1 = this.add.tileSprite(-5, 560, 200, 400, 'tile');
+		this.physics.add.existing(ground1)
+		ground1.body.setImmovable(true)
+		ground1.body.moves = false;
 
-		level2 = this.add.tileSprite(300, 560, 500, 400, 'tile');
-		this.physics.add.existing(level2)
-		level2.body.setImmovable(true)
-		level2.body.moves = false;
-    /* groundGame = this.physics.add.staticSprite(-5, 460, "ground"); */
-		/* groundGame.setOrigin(0, 0.5) */
+		let ground2 = this.add.tileSprite(580, 560, 800, 400, 'tile');
+		this.physics.add.existing(ground2)
+		ground2.body.setImmovable(true)
+		ground2.body.moves = false;
+
+		let ground3 = this.add.tileSprite(1450, 560, 800, 400, 'tile');
+		this.physics.add.existing(ground3)
+		ground3.body.setImmovable(true)
+		ground3.body.moves = false;
+
+		let ground4 = this.add.tileSprite(2100, 560, 300, 400, 'tile');
+		this.physics.add.existing(ground4)
+		ground4.body.setImmovable(true)
+		ground4.body.moves = false;
+
+
+
+		let pipe1 = this.add.tileSprite(1600, 400, 60, 200, 'tile');
+		this.physics.add.existing(pipe1)
+		pipe1.body.setImmovable(true)
+		pipe1.body.moves = false;
+		let pipe2 = this.add.tileSprite(1480, 400, 60, 200, 'tile');
+		this.physics.add.existing(pipe2)
+		pipe2.body.setImmovable(true)
+		pipe2.body.moves = false;
+		let pipe3 = this.add.tileSprite(1600, 100, 60, 200, 'tile');
+		this.physics.add.existing(pipe3)
+		pipe3.body.setImmovable(true)
+		pipe3.body.moves = false;
+		let pipe4 = this.add.tileSprite(1480, 100, 60, 200, 'tile');
+		this.physics.add.existing(pipe4)
+		pipe4.body.setImmovable(true)
+		pipe4.body.moves = false;
+
+
     giovanniPlayer = this.physics.add.sprite(
 			30,
 
@@ -83,11 +111,19 @@ class Giovanni extends Phaser.Scene {
 			color: "black",
 		});
 
-		this.physics.add.collider(giovanniPlayer, level1);
-		this.physics.add.collider(giovanniPlayer, level2);
+		this.physics.add.collider(giovanniPlayer, ground1);
+		this.physics.add.collider(giovanniPlayer, ground2);
+		this.physics.add.collider(giovanniPlayer, ground3);
+		this.physics.add.collider(giovanniPlayer, ground4);
+
+		this.physics.add.collider(giovanniPlayer, pipe1);
+		this.physics.add.collider(giovanniPlayer, pipe2);
+		this.physics.add.collider(giovanniPlayer, pipe3);
+		this.physics.add.collider(giovanniPlayer, pipe4);
 		/* this.physics.add.collider(giovanniPlayer, groundGame); */
-		this.physics.add.collider(coins, level1);
-		this.physics.add.collider(coins, level2);
+		this.physics.add.collider(coins, ground1);
+		this.physics.add.collider(coins, ground2);
+		this.physics.add.collider(coins, ground3);
 		/* 		this.physics.world.collide(giovanniPlayer, [groundGame])
 		this.physics.world.collide(coins, [groundGame]) */
 
