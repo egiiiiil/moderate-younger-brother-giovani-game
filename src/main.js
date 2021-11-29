@@ -3,9 +3,6 @@ import Title from "./Title.js";
 import Highscore from "./HighscorePage";
 import Giovanni from "./Giovanni.js";
 
-//global variables for highscore page
-var ScreenOrientation, highscore, scoreDisplay, highScoreText;
-
 var config = {
 	type: Phaser.AUTO,
 	width: 800,
