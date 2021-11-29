@@ -185,8 +185,8 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.collider(coins, ground3);
 		/* 		this.physics.world.collide(giovanniPlayer, [groundGame])
 		this.physics.world.collide(coins, [groundGame]) */
-		this.physics.add.collider(giovanniPlayer, groundGame);
-		this.physics.add.collider(coins, groundGame);
+/* 		this.physics.add.collider(giovanniPlayer, groundGame);
+		this.physics.add.collider(coins, groundGame); */
 
 		//COLLIDER FOR GIOVANNI AND PATRIK
 		this.physics.add.collider(giovanniPlayer, patrikEnemy);
@@ -247,8 +247,8 @@ class Giovanni extends Phaser.Scene {
 				endGame();
 			}
 		}
-		console.log(giovanniPlayer.y > 1000);
-		console.log(resetGame);
+/* 		console.log(giovanniPlayer.y > 1000);
+		console.log(resetGame); */
 
 		function resetGame() {
 			giovanniPlayer.setPosition(30, 290);
