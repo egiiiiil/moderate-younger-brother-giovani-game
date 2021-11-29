@@ -3,12 +3,15 @@ import { Tile } from "phaser/src/tilemaps";
 /* import background from './bg.png'; */
 /* import ground from '../img/ground.png'; */
 
-let giovanniPlayer, 
-		giovanniControls, 
-		timer, 
-		coins, 
-		bg
-
+let giovanniPlayer,
+	giovanniControls,
+	timer,
+	coins,
+	bg,
+	level1,
+	level2,
+	patrikEnemy;
+let resetGame = 0;
 
 class Giovanni extends Phaser.Scene {
 	constructor() {
@@ -27,6 +30,7 @@ class Giovanni extends Phaser.Scene {
 			"./assets/coins/coins.json",
 			"./assets/coins"
 		);
+
 		this.load.image('tile', './assets/tile/tile.png')
 	}
 
@@ -126,21 +130,30 @@ class Giovanni extends Phaser.Scene {
 			
 
 
+		/* 		coins = this.physics.add.sprite(
+			60,
+			290,
+			"runninggiovanni",
+			"runningG0.png"
+		);
+		coins.setScale(0.04) */
 
+		coins = this.add.group();
 
+		for (var i = 0; i <= 2; i++) {
+			//  This creates a new Phaser.Sprite instance within the group
+			//  It will be randomly placed within the world and use the 'baddie' image to display
+			coins.create(
+				360 + Math.random() * 200,
+				120 + Math.random() * 200,
+				"coins"
+			);
+			//coins.setScale(0.04)
+		}
 
-/* 		coins = this.add.group();
-
-    for (var i = 0; i <= 2; i++)
-    {
-        //  This creates a new Phaser.Sprite instance within the group
-        //  It will be randomly placed within the world and use the 'baddie' image to display
-        coins.create(360 + Math.random() * 200, 120 + Math.random() * 200, 'coins');
-				//coins.setScale(0.04)
-    } */
-
-
-		timer = this.add.text(30, 100, "00000", {
+		coins = this.physics.add.sprite(60, 300, "coins", "coins00.png");
+		coins.setScale(0.04);
+		timer = this.add.text(10, 10, "00000", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
 			color: "black",
@@ -173,6 +186,12 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.collider(coins, ground3);
 		/* 		this.physics.world.collide(giovanniPlayer, [groundGame])
 		this.physics.world.collide(coins, [groundGame]) */
+		this.physics.add.collider(giovanniPlayer, groundGame);
+		this.physics.add.collider(coins, groundGame);
+
+		//COLLIDER FOR GIOVANNI AND PATRIK
+		this.physics.add.collider(giovanniPlayer, patrikEnemy);
+
 
 		this.anims.create({
 			key: "coinsAnimation",
@@ -217,7 +236,31 @@ class Giovanni extends Phaser.Scene {
 			giovanniPlayer.setVelocityY(-225);
 		}
 
-  //coins.anims.play("coinsAnimation", true);
+		coins.anims.play("coinsAnimation", true);
+		function reset(world) {
+			if (giovanniPlayer.y > 1000) {
+				resetGame();
+			}
+			if (this.physics.add.collider(giovanniPlayer, patrikEnemy)) {
+				resetGame();
+			}
+			if (resetGame > 2) {
+				endGame();
+			}
+		}
+		console.log(giovanniPlayer.y > 1000);
+		console.log(resetGame);
+
+		function resetGame() {
+			giovanniPlayer.setPosition(30, 290);
+		}
+
+		function endGame() {
+			this.scene.add("highscore", HighscorePage, true);
+			this.scene.remove("Giovanni");
+		}
+
+		//coins.anims.play("coinsAnimation", true);
 
 	}
 }
