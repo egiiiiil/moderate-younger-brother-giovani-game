@@ -59,7 +59,6 @@ export default class Highscore extends Phaser.Scene {
 		}
 	}
 }
- */
 // export default class Highscore extends Phaser.Scene {
 // 	constructor() {
 // 		super({ key: "Highscore", active: true });
