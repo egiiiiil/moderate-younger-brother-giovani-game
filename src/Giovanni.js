@@ -142,9 +142,15 @@ class Giovanni extends Phaser.Scene {
 		function reset(world) {
 			if (giovanniPlayer.y > 1000) {
 				resetGame();
+				resetScore();
 			}
 			if (this.physics.add.collider(giovanniPlayer, patrikEnemy)) {
 				resetGame();
+				resetScore();
+			}
+			if (timer == 0) {
+				resetGame();
+				resetScore();
 			}
 			if (resetGame > 2) {
 				endGame();
