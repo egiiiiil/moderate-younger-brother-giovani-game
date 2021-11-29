@@ -125,7 +125,17 @@ class Giovanni extends Phaser.Scene {
 		giovanniControls = this.input.keyboard.createCursorKeys();
 			
 
-
+		for (let i = 0; i <= 99; i++) {
+			coins = this.physics.add.sprite(
+				(220 + ( i * 10 )),
+				280,
+				"coins",
+				"coins00.png"
+			);
+			coins.setScale(1)
+			coins.body.moves = false;
+			console.log(coins)
+		}
 
 
 
