@@ -291,7 +291,7 @@ coins = this.physics.add.sprite(
 
 		}
 
-		coins.anims.play("coinsAnimation", true);
+		/*coins.anims.play("coinsAnimation", true);
 		function reset(world) {
 			if (giovanniPlayer.y > 1000) {
 				resetGame();
@@ -312,7 +312,7 @@ coins = this.physics.add.sprite(
 /* 		console.log(giovanniPlayer.y > 1000);
 		console.log(resetGame); */
 
-		function resetGame() {
+		/*function resetGame() {
 			giovanniPlayer.setPosition(30, 290);
 		}
 
@@ -323,6 +323,6 @@ coins = this.physics.add.sprite(
 
 		//coins.anims.play("coinsAnimation", true);
 
-}
+}*/
 	}
 export default Giovanni;
