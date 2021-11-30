@@ -4,7 +4,6 @@ import { Tile } from "phaser/src/tilemaps";
 
 let giovanniPlayer,
 		giovanniControls,
-		timer,
 		coins,
 		bg,
 		level1,
@@ -13,6 +12,9 @@ let giovanniPlayer,
 		patrikEnemy;
 let resetGame = 0;
 let score = 0
+let scoreText
+let timer = 30000
+let timerText
 
 class Giovanni extends Phaser.Scene {
 	constructor() {
@@ -145,9 +147,9 @@ class Giovanni extends Phaser.Scene {
 		});
 		coins.enableBody = true
 
-		//hud = this.add.container([timer, score]);
-		//lock it to the camera
-		//hud.setScrollFactor(0);
+
+		
+		
 
 
 
@@ -155,7 +157,7 @@ class Giovanni extends Phaser.Scene {
 
 		//for (var i = 0; i < coinChildren.length; i++) {
 		for (var i = 0; i < coinChildren.length; i++) {
-			 console.log(coinChildren[i])
+			 
 			 coinChildren[0].setPosition(200, 270);
 			 coinChildren[1].setPosition(250, 270);
 			 coinChildren[2].setPosition(300, 270);
@@ -213,14 +215,29 @@ class Giovanni extends Phaser.Scene {
 			coinChildren[48].setPosition(1450, 220);
 			coinChildren[49].setPosition(1500, 220);
 			coinChildren[50].setPosition(1550, 220);
+			coinChildren[51].setPosition(1600, 220);
+			coinChildren[52].setPosition(1650, 220);
+			coinChildren[53].setPosition(1700, 220);
+			coinChildren[54].setPosition(1750, 220);
+			coinChildren[55].setPosition(1800, 220);
+			coinChildren[56].setPosition(1850, 220);
+			coinChildren[57].setPosition(1900, 220);
+			coinChildren[58].setPosition(1950, 220);
+			coinChildren[59].setPosition(2000, 220);
+
+			
 
 
 		}
 
     coinGroup.refresh();
 
-
-		timer = this.add.text(30, 100, "0", {
+		timerText = this.add.text(100, 50, "30000", {
+			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			fontSize: 20,
+			color: "black",
+		});
+		scoreText = this.add.text(30, 50, "0", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
 			color: "black",
@@ -287,7 +304,7 @@ class Giovanni extends Phaser.Scene {
 	
 
 	update() {
-		timer.x = giovanniPlayer.body.position.x;
+		scoreText.x = giovanniPlayer.body.position.x;
 		if (giovanniControls.left.isDown) {
 			giovanniPlayer.setVelocityX(-200);
 			giovanniPlayer.flipX = true;
@@ -304,18 +321,25 @@ class Giovanni extends Phaser.Scene {
 
 		}	
 		//coins.anims.play("coinsAnimation", true);
+		this.timerUpdate();
 	}
   
   collectCoin (giovanniPlayer, coin) {
 	  
 		coinGroup.killAndHide(coin)
 		coinGroup.remove(coin)
-		console.log("hej")
+
 		coin.body.enable = false
 
 	  score += 1;
-	  timer.text = score + "/30"
-		}
+	  scoreText.text = score + "/60"
+		console.log(score)
+	}
+	timerUpdate (timer) {
+		const date = new Date
+		console.log(date)
+
+	}
 
 	
 
@@ -325,7 +349,7 @@ class Giovanni extends Phaser.Scene {
 
 
 	
-function reset(world) {
+/*function reset(world) {
 	if (giovanniPlayer.y > 1000) {
 		resetGame();
 		resetScore();
@@ -352,9 +376,9 @@ function reset(world) {
 	function endGame() {
 		this.scene.add("highscore", HighscorePage, true);
 		this.scene.remove("Giovanni");
-	}*/
+	}
 
 
-}
+}*/
 
 export default Giovanni;
