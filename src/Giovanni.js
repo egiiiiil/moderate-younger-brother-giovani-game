@@ -3,11 +3,13 @@ import { Tile } from "phaser/src/tilemaps";
 /* import background from './bg.png'; */
 /* import ground from '../img/ground.png'; */
 
-let giovanniPlayer, 
-		giovanniControls, 
-		timer, 
-		coins, 
-		bg
+let giovanniPlayer
+let	giovanniControls
+let timer
+let coins
+let coinGroup
+let bg
+let score = 0
 
 
 class Giovanni extends Phaser.Scene {
@@ -75,37 +77,57 @@ class Giovanni extends Phaser.Scene {
 
 
     giovanniPlayer = this.physics.add.sprite(
-			30,
-
-      290,
+			30, 290,
       "runninggiovanni",
       "runningG0.png"
 			);
 		giovanniPlayer.setScale(0.05)
 		giovanniControls = this.input.keyboard.createCursorKeys();
 			
-/* 		coins = this.physics.add.sprite(
-			60,
-			290,
+coins = this.physics.add.sprite(
+			0,
+			0,
 			"coins",
 			"coins00.png"
 		);
-		coins.setScale(0.04) */
+		coins.setScale(0.04)
+		
 
 
+		coinGroup = this.physics.add.staticGroup({
+			key: 'coins',
+			frameQuantity: 30,
+			immovable: true
+		});
+		coins.enableBody = true
 
-		coins = this.add.group();
+		//hud = this.add.container([timer, score]);
+		//lock it to the camera
+		//hud.setScrollFactor(0);
 
-    for (var i = 0; i <= 2; i++)
+
+		var coinChildren = coinGroup.getChildren();
+
+    for (var i = 0; i < coinChildren.length; i++)
+    {
+        var x = Phaser.Math.Between(200, 2000);
+        var y = Phaser.Math.Between(270, 300);
+
+        coinChildren[i].setPosition(x, y);
+    }
+
+    coinGroup.refresh();
+
+    /*for (var i = 0; i <= 2; i++)
     {
         //  This creates a new Phaser.Sprite instance within the group
         //  It will be randomly placed within the world and use the 'baddie' image to display
         coins.create(360 + Math.random() * 200, 120 + Math.random() * 200, 'coins');
 				//coins.setScale(0.04)
-    }
+    }*/
 
 
-		timer = this.add.text(30, 100, "00000", {
+		timer = this.add.text(30, 100, "0", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
 			color: "black",
@@ -152,9 +174,22 @@ class Giovanni extends Phaser.Scene {
 		});
 		this.cameras.main.setBounds(0, 0, 7000, 600);
 		this.cameras.main.startFollow(giovanniPlayer);
+
+
+
+		this.physics.add.overlap(giovanniPlayer, coinGroup, this.collectCoin, null, this)
 	}
+	
 
 	update() {
+
+		
+		timer.x = giovanniPlayer.body.position.x;
+
+		if (giovanniPlayer.y > this.scene.height) {
+			this.scene.restart
+		}
+
 		if (giovanniControls.left.isDown) {
 			giovanniPlayer.setVelocityX(-200);
 			giovanniPlayer.flipX = true;
@@ -168,10 +203,20 @@ class Giovanni extends Phaser.Scene {
 		}
 		if (giovanniPlayer.body.touching.down && giovanniControls.space.isDown) {
 			giovanniPlayer.setVelocityY(-225);
-		}
-
-  //coins.anims.play("coinsAnimation", true);
-
+		}	
 	}
+  //coins.anims.play("coinsAnimation", true);
+  
+   collectCoin (giovanniPlayer, coin) {
+	  
+	coinGroup.killAndHide(coin)
+	coinGroup.remove(coin)
+	console.log("hej")
+	coin.body.enable = false
+
+	  score += 10;
+	  timer.text = score + "/300"
+
 }
+	}
 export default Giovanni;
