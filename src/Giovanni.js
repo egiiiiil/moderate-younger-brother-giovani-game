@@ -9,12 +9,13 @@ let giovanniPlayer,
 		level1,
 		level2,
   	coinGroup,
-		patrikEnemy;
+		patrikEnemy,
+		timerText,
+		callBeforeAndAfterZero
 let resetGame = 0;
 let score = 0
 let scoreText
-let timer = 30000
-let timerText
+
 
 class Giovanni extends Phaser.Scene {
 	constructor() {
@@ -232,11 +233,25 @@ class Giovanni extends Phaser.Scene {
 
     coinGroup.refresh();
 
-		timerText = this.add.text(100, 50, "30000", {
+/* 		timerText = this.add.text(100, 50, "30000", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
 			color: "black",
-		});
+		}); */
+		this.initialTime = 10;
+    timerText = this.add.text(32, 
+															32,
+															convertTimeToSeconds(this.initialTime)
+															);
+    // Each 1000 ms call beforeAndAfterZero
+    callBeforeAndAfterZero = this.time.addEvent({ 
+			delay: 1000, 
+			callback: beforeAndAfterZero, 
+			callbackScope: this, 
+			loop: true });
+
+
+
 		scoreText = this.add.text(30, 50, "0", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
@@ -380,5 +395,24 @@ class Giovanni extends Phaser.Scene {
 
 
 }*/
+function convertTimeToSeconds(seconds) {
+	// Minutes
+	var minutes = Math.floor(seconds/60);
+	// Seconds
+	var partInSeconds = seconds%60;
+	// Adds left zeros to seconds
+	partInSeconds = partInSeconds.toString().padStart(2,'0');
+	// Returns formated time
+	return `00${partInSeconds}`;
+}
 
+
+function beforeAndAfterZero() {
+	if (this.initialTime == 0) {
+			timerText.setText(`Time's up!`)
+	} else {
+			this.initialTime -= 1; // One second
+			timerText.setText(convertTimeToSeconds(this.initialTime));
+	}
+}
 export default Giovanni;
