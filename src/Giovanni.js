@@ -1,6 +1,5 @@
 import Phaser from "phaser";
 import { Tile } from "phaser/src/tilemaps";
-import Highscore from "./HighscorePage";
 
 let giovanniPlayer,
 	giovanniControls,
@@ -736,7 +735,6 @@ class Giovanni extends Phaser.Scene {
 		hud = this.add.container(0, 0, [timerText, scoreText]);
 		//lock it to the camera
 		hud.setScrollFactor(0);
-
 	}
 
 	collectCoin(giovanniPlayer, coin) {
@@ -749,12 +747,9 @@ class Giovanni extends Phaser.Scene {
 		scoreText.text = score + "/60";
 		console.log(score);
 	}
-
-	timerUpdate (timer) {
-		const date = new Date
-		
-
-
+	timerUpdate(timer) {
+		const date = new Date();
+		console.log(date);
 	}
 }
 
@@ -771,51 +766,11 @@ function convertTimeToSeconds(seconds) {
 
 function beforeAndAfterZero() {
 	if (this.initialTime == 0) {
-
-		timerText.setText(`Time's up!`)
-	/* }
-	if (this.initialTime == -3) { */
-		/* let name = prompt('name') */
-		getLocalStorage()
-		/* bg.destroy(); */
-		this.scene.add("Highscore", Highscore, true)
-		this.scene.destroy("Giovanni")
+		timerText.setText(`Time's up!`);
 	} else {
 		this.initialTime -= 1; // One second
 		timerText.setText(convertTimeToSeconds(this.initialTime));
 	}
 }
-
-/* function playerObject() {
-	//monster object
-	let username = localStorage.getItem("players");
-	if(!username){
-    username = prompt("Please enter username");
-    localStorage.setItem("player", username);
-	}	
-} */
-function getLocalStorage() {
-	if (localStorage.getItem("players")) {
-		let oldPlayers = JSON.parse(localStorage.getItem('players')) || [];
-		let newPlayer = prompt('name');
-		let newPlayerAndScore = [newPlayer, score];
-		
-		oldPlayers.push(newPlayerAndScore)
-		
-		localStorage.setItem('players', JSON.stringify(oldPlayers))
-
-		console.log("something");
-		console.log(localStorage.getItem("players"))
-	} else {
-
-	
-		let oldPlayers = JSON.parse(localStorage.getItem('players')) || [];
-		let newPlayer = prompt('name');
-		let newPlayerAndScore = [newPlayer, score];
-		oldPlayers.push(newPlayerAndScore)
-		
-		localStorage.setItem('players', JSON.stringify(oldPlayers))
-		}
-	}
 
 export default Giovanni;
