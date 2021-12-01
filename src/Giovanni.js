@@ -374,7 +374,7 @@ class Giovanni extends Phaser.Scene {
 
 		coinGroup = this.physics.add.staticGroup({
 			key: "coins",
-			frameQuantity: 60,
+			frameQuantity: 84,
 			immovable: true,
 		});
 		coins.enableBody = true;
@@ -383,70 +383,115 @@ class Giovanni extends Phaser.Scene {
 
 		//for (var i = 0; i < coinChildren.length; i++) {
 		for (var i = 0; i < coinChildren.length; i++) {
-			coinChildren[0].setPosition(200, 270);
-			coinChildren[1].setPosition(250, 270);
-			coinChildren[2].setPosition(300, 270);
-			coinChildren[3].setPosition(350, 270);
-			coinChildren[4].setPosition(400, 270);
-			coinChildren[5].setPosition(450, 270);
-			coinChildren[6].setPosition(500, 270);
-			coinChildren[7].setPosition(550, 270);
-			coinChildren[8].setPosition(600, 270);
-			coinChildren[9].setPosition(650, 270);
-			coinChildren[10].setPosition(700, 270);
-			coinChildren[11].setPosition(750, 270);
-			coinChildren[12].setPosition(800, 270);
-			coinChildren[13].setPosition(850, 270);
-			coinChildren[14].setPosition(900, 270);
-			coinChildren[15].setPosition(950, 270);
+			coinChildren[0].setPosition(200, 770);
+			coinChildren[1].setPosition(250, 770);
+			coinChildren[2].setPosition(300, 770);
+			
+			coinChildren[6].setPosition(500, 770);
+			coinChildren[7].setPosition(550, 770);
+			coinChildren[8].setPosition(600, 770);
+		
+		   coinChildren[16].setPosition(200, 720);
+		   coinChildren[17].setPosition(250, 720);
+		   coinChildren[18].setPosition(300, 720);
+		  
+		   coinChildren[22].setPosition(500, 720);
+		   coinChildren[23].setPosition(550, 720);
+		   coinChildren[24].setPosition(600, 720);
+		   coinChildren[25].setPosition(650, 720);
+		   coinChildren[26].setPosition(700, 720);
+		   coinChildren[27].setPosition(750, 720);
+		   coinChildren[28].setPosition(810, 670);
+		   coinChildren[29].setPosition(860, 620);
+		   coinChildren[30].setPosition(910, 670);
+		   
+		   coinChildren[34].setPosition(1200, 770);
+		   coinChildren[38].setPosition(1400, 770);
+		   coinChildren[39].setPosition(1450, 770);
 
-			coinChildren[16].setPosition(200, 220);
-			coinChildren[17].setPosition(250, 220);
-			coinChildren[18].setPosition(300, 220);
-			coinChildren[19].setPosition(350, 220);
-			coinChildren[20].setPosition(400, 220);
-			coinChildren[21].setPosition(450, 220);
-			coinChildren[22].setPosition(500, 220);
-			coinChildren[23].setPosition(550, 220);
-			coinChildren[24].setPosition(600, 220);
-			coinChildren[25].setPosition(650, 220);
-			coinChildren[26].setPosition(700, 220);
-			coinChildren[27].setPosition(750, 220);
-			coinChildren[28].setPosition(800, 220);
-			coinChildren[29].setPosition(850, 220);
-			coinChildren[30].setPosition(900, 220);
-			coinChildren[31].setPosition(950, 220);
+			coinChildren[40].setPosition(1550, 770);
+			coinChildren[41].setPosition(1600, 770);
+		   coinChildren[42].setPosition(1150, 670);
+		   coinChildren[43].setPosition(1200, 670);
+		   coinChildren[44].setPosition(1250, 670);
 
-			coinChildren[32].setPosition(1100, 270);
-			coinChildren[33].setPosition(1150, 270);
-			coinChildren[34].setPosition(1200, 270);
-			coinChildren[35].setPosition(1250, 270);
-			coinChildren[36].setPosition(1300, 270);
-			coinChildren[37].setPosition(1350, 270);
-			coinChildren[38].setPosition(1400, 270);
-			coinChildren[39].setPosition(1450, 270);
+		   coinChildren[45].setPosition(1600, 670);
+		   coinChildren[46].setPosition(1650, 770);
 
-			coinChildren[40].setPosition(1550, 270);
+		   coinChildren[9].setPosition(1900, 500);
 
-			coinChildren[41].setPosition(1100, 220);
-			coinChildren[42].setPosition(1150, 220);
-			coinChildren[43].setPosition(1200, 220);
-			coinChildren[44].setPosition(1250, 220);
-			coinChildren[45].setPosition(1300, 220);
-			coinChildren[46].setPosition(1350, 220);
-			coinChildren[47].setPosition(1400, 220);
-			coinChildren[48].setPosition(1450, 220);
-			coinChildren[49].setPosition(1500, 220);
-			coinChildren[50].setPosition(1550, 220);
-			coinChildren[51].setPosition(1600, 220);
-			coinChildren[52].setPosition(1650, 220);
-			coinChildren[53].setPosition(1700, 220);
-			coinChildren[54].setPosition(1750, 220);
-			coinChildren[55].setPosition(1800, 220);
-			coinChildren[56].setPosition(1850, 220);
-			coinChildren[57].setPosition(1900, 220);
-			coinChildren[58].setPosition(1950, 220);
-			coinChildren[59].setPosition(2000, 220);
+		   coinChildren[59].setPosition(2000, 720);
+		   coinChildren[3].setPosition(2000, 770);
+			coinChildren[4].setPosition(2050, 720);
+			coinChildren[5].setPosition(2100, 670);
+
+		   coinChildren[10].setPosition(2150, 620);
+		   coinChildren[11].setPosition(2200, 570);
+		   coinChildren[12].setPosition(2850, 500);
+		   coinChildren[13].setPosition(2520, 770);
+		   coinChildren[14].setPosition(2520, 420);
+		   coinChildren[15].setPosition(2310, 670);
+
+		    coinChildren[19].setPosition(2520, 670);
+		   coinChildren[20].setPosition(2700, 700);
+		   coinChildren[21].setPosition(2520, 540);
+
+		   coinChildren[31].setPosition(1900, 400);
+		   coinChildren[32].setPosition(1950, 350);
+		   coinChildren[33].setPosition(1850, 350);
+		   coinChildren[35].setPosition(1800, 350);
+		   coinChildren[36].setPosition(1750, 350);
+		   coinChildren[37].setPosition(1700, 350);
+
+		    coinChildren[47].setPosition(1650, 350);
+		   coinChildren[48].setPosition(1550, 350);
+		   coinChildren[49].setPosition(1500, 350);
+		   coinChildren[50].setPosition(1450, 350);
+		   coinChildren[51].setPosition(1400, 350);
+		   coinChildren[52].setPosition(1350, 350);
+
+		   coinChildren[53].setPosition(1250, 350);
+		   coinChildren[54].setPosition(1200, 350);
+		   coinChildren[55].setPosition(1150, 350);
+		   coinChildren[56].setPosition(1100, 350);
+		   coinChildren[57].setPosition(1050, 350);
+
+		   coinChildren[58].setPosition(900, 350);
+
+		   //UNFIXED COINS DOWN HERE
+
+		   coinChildren[60].setPosition(850, 400);
+		   coinChildren[61].setPosition(800, 400);
+		   coinChildren[62].setPosition(750, 400);
+		   coinChildren[63].setPosition(700, 400);
+		   coinChildren[64].setPosition(650, 400);
+		   coinChildren[65].setPosition(600, 400);
+
+		   coinChildren[66].setPosition(550, 400);
+		   coinChildren[67].setPosition(500, 400);
+		   coinChildren[68].setPosition(450, 400);
+		   coinChildren[69].setPosition(400, 400);
+		   coinChildren[70].setPosition(350, 400);
+
+		   coinChildren[71].setPosition(300, 400);
+
+		   coinChildren[72].setPosition(250, 400);
+		   coinChildren[73].setPosition(200, 400);
+		   coinChildren[74].setPosition(150, 400);
+		   coinChildren[75].setPosition(100, 400);
+		   coinChildren[76].setPosition(50, 400);
+
+
+		   coinChildren[77].setPosition(300, 400);
+		   coinChildren[78].setPosition(250, 400);
+		   coinChildren[79].setPosition(200, 400);
+		   coinChildren[80].setPosition(150, 400);
+		   coinChildren[81].setPosition(100, 400);
+		   coinChildren[82].setPosition(50, 400);
+
+		   coinChildren[83].setPosition(140, 500);
+
+
 		}
 
 		coinGroup.refresh();
@@ -588,6 +633,7 @@ class Giovanni extends Phaser.Scene {
 
 		this.cameras.main.setBounds(0, 0, 7000, 1100);
 		this.cameras.main.startFollow(giovanniPlayer);
+		coins.anims.play("coinsAnimation", true);
 
 		this.physics.add.overlap(
 			giovanniPlayer,
@@ -601,9 +647,9 @@ class Giovanni extends Phaser.Scene {
 		console.log("reset score");
 	}
 	reset(world) {
-		console.log(giovanniPlayer.y > 1000);
+		console.log(giovanniPlayer.y > 1500);
 
-		if (giovanniPlayer.y > 1000) {
+		if (giovanniPlayer.y > 1200) {
 			this.resetGameFunction();
 			this.resetScore();
 		}
@@ -650,7 +696,7 @@ class Giovanni extends Phaser.Scene {
 		if (giovanniPlayer.body.touching.down != true) {
 			giovanniPlayer.anims.play("giovannijump", true);
 		}
-
+		
 		coins.anims.play("coinsAnimation", true);
 		/* 		console.log(giovanniPlayer.y > 1000);
 		console.log(resetGame); */
