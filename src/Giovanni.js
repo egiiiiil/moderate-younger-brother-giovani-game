@@ -44,6 +44,14 @@ class Giovanni extends Phaser.Scene {
 		);
 
 		this.load.image("tile", "./assets/tile/tile.png");
+		this.load.image("teo", "./assets/teo.png");
+		this.load.image("rootdude", "./assets/roots.png");
+		this.load.image("sofa1", "./assets/sofa1.png");
+		this.load.image("sofa2", "./assets/sofa2.png");
+		this.load.image("roots1", "./assets/roots1.png");
+		this.load.image("roots2", "./assets/roots2.png");
+		this.load.image("reception", "./assets/reception.png");
+		this.load.image("table", "./assets/table.png");
 	}
 
 	create() {
@@ -96,11 +104,20 @@ class Giovanni extends Phaser.Scene {
 		reception.body.setImmovable(true);
 		reception.body.moves = false;
 
-		this.add.text(340, 750, "RECEPTION", {
+		this.add.image(400, 770, "reception");
+
+		this.add.text(340, 650, "RECEPTION", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
 			color: "black",
 		});
+		this.add.text(355, 620, "Hyper Island", {
+			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			fontSize: 15,
+			color: "black",
+		});
+
+		this.add.image(400, 715, "teo");
 
 		///////////////////////////////ROOTS CAFE///////////////////////////////////////
 		let rootsCafe1 = this.add.tileSprite(700, 770, 160, 60, "tile");
@@ -112,16 +129,20 @@ class Giovanni extends Phaser.Scene {
 		rootsCafe2.body.setImmovable(true);
 		rootsCafe2.body.moves = false;
 
-		this.add.text(825, 730, "ROOTS", {
+		this.add.image(700, 770, "roots1");
+		this.add.image(860, 760, "roots2");
+
+		this.add.text(665, 750, "ROOTS", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
-			color: "black",
+			color: "white",
 		});
-		this.add.text(845, 755, "Cafe", {
+		this.add.text(685, 775, "Cafe", {
 			fontFamily: "Snell Roundhand, cursive",
 			fontSize: 15,
-			color: "black",
+			color: "white",
 		});
+		this.add.image(845, 700, "rootdude");
 
 		/////////////////////////////SOFAS/////////////////////////////////////////////////
 		let sofa1 = this.add.tileSprite(1100, 770, 20, 60, "tile");
@@ -148,6 +169,10 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.existing(sofa6);
 		sofa6.body.setImmovable(true);
 		sofa6.body.moves = false;
+
+		this.add.image(1120, 770, "sofa1");
+		this.add.image(1290, 770, "sofa2");
+		this.add.image(1350, 770, "sofa1");
 
 		/////////////////////////////STAIRS////////////////////////////////////////////////
 		let stairs1 = this.add.tileSprite(2200, 775, 50, 50, "tile");
@@ -301,6 +326,11 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.existing(tableLegs8);
 		tableLegs8.body.setImmovable(true);
 		tableLegs8.body.moves = false;
+
+		this.add.image(2100, 437, "table");
+		this.add.image(1740, 437, "table");
+		this.add.image(1440, 437, "table");
+		this.add.image(1140, 437, "table");
 
 		/////////////////////////////////////////LAMPS////////////////////////////////////////////
 
