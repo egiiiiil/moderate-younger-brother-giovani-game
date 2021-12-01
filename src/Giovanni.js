@@ -1,22 +1,21 @@
 import Phaser from "phaser";
 import { Tile } from "phaser/src/tilemaps";
 
-
 let giovanniPlayer,
-		giovanniControls,
-		coins,
-		bg,
-		level1,
-		level2,
-  	coinGroup,
-		patrikEnemy,
-		timerText,
-		callBeforeAndAfterZero,
-		hud
+	giovanniControls,
+	coins,
+	bg,
+	level1,
+	level2,
+	coinGroup,
+	patrikEnemy,
+	timerText,
+	timer,
+	callBeforeAndAfterZero,
+	hud;
 let resetGame = 0;
-let score = 0
-let scoreText
-
+let score = 0;
+let scoreText;
 
 console.log("sup");
 
@@ -361,52 +360,39 @@ class Giovanni extends Phaser.Scene {
 
 		giovanniPlayer = this.physics.add.sprite(
 			30,
-      770,
-      "runninggiovanni",
-      "runningG0.png"
-			);
-		giovanniPlayer.setScale(0.8)
-		giovanniControls = this.input.keyboard.createCursorKeys();
-			
-
-		coins = this.physics.add.sprite(
-			0,
-			0,
-			"coins",
-			"coins00.png"
+			770,
+			"runninggiovanni",
+			"runningG0.png"
 		);
-		coins.setScale(0.04)
-		
+		giovanniPlayer.setScale(0.8);
+		giovanniControls = this.input.keyboard.createCursorKeys();
+		giovanniPlayer.setCollideWorldBounds(true);
+		this.physics.world.setBounds(0, 0, 10000, 1500);
 
+		coins = this.physics.add.sprite(0, 0, "coins", "coins00.png");
+		coins.setScale(0.04);
 
 		coinGroup = this.physics.add.staticGroup({
-			key: 'coins',
+			key: "coins",
 			frameQuantity: 60,
-			immovable: true
+			immovable: true,
 		});
-		coins.enableBody = true
-
-
-		
-		
-
-
+		coins.enableBody = true;
 
 		var coinChildren = coinGroup.getChildren();
 
 		//for (var i = 0; i < coinChildren.length; i++) {
 		for (var i = 0; i < coinChildren.length; i++) {
-			 
-			 coinChildren[0].setPosition(200, 270);
-			 coinChildren[1].setPosition(250, 270);
-			 coinChildren[2].setPosition(300, 270);
-			 coinChildren[3].setPosition(350, 270);
-			 coinChildren[4].setPosition(400, 270);
-			 coinChildren[5].setPosition(450, 270);
-			 coinChildren[6].setPosition(500, 270);
-			 coinChildren[7].setPosition(550, 270);
-			 coinChildren[8].setPosition(600, 270);
-			 coinChildren[9].setPosition(650, 270);
+			coinChildren[0].setPosition(200, 270);
+			coinChildren[1].setPosition(250, 270);
+			coinChildren[2].setPosition(300, 270);
+			coinChildren[3].setPosition(350, 270);
+			coinChildren[4].setPosition(400, 270);
+			coinChildren[5].setPosition(450, 270);
+			coinChildren[6].setPosition(500, 270);
+			coinChildren[7].setPosition(550, 270);
+			coinChildren[8].setPosition(600, 270);
+			coinChildren[9].setPosition(650, 270);
 			coinChildren[10].setPosition(700, 270);
 			coinChildren[11].setPosition(750, 270);
 			coinChildren[12].setPosition(800, 270);
@@ -431,7 +417,6 @@ class Giovanni extends Phaser.Scene {
 			coinChildren[30].setPosition(900, 220);
 			coinChildren[31].setPosition(950, 220);
 
-
 			coinChildren[32].setPosition(1100, 270);
 			coinChildren[33].setPosition(1150, 270);
 			coinChildren[34].setPosition(1200, 270);
@@ -441,8 +426,7 @@ class Giovanni extends Phaser.Scene {
 			coinChildren[38].setPosition(1400, 270);
 			coinChildren[39].setPosition(1450, 270);
 
-		 	coinChildren[40].setPosition(1550, 270);
-
+			coinChildren[40].setPosition(1550, 270);
 
 			coinChildren[41].setPosition(1100, 220);
 			coinChildren[42].setPosition(1150, 220);
@@ -463,35 +447,26 @@ class Giovanni extends Phaser.Scene {
 			coinChildren[57].setPosition(1900, 220);
 			coinChildren[58].setPosition(1950, 220);
 			coinChildren[59].setPosition(2000, 220);
-
-			
-
-
 		}
 
-    coinGroup.refresh();
+		coinGroup.refresh();
 
-/* 		timerText = this.add.text(100, 50, "30000", {
+		/* 		timerText = this.add.text(100, 50, "30000", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
 			color: "black",
 		}); */
 		this.initialTime = 10;
-    timerText = this.add.text(32, 
-															32,
-															convertTimeToSeconds(this.initialTime)
-															);
-    // Each 1000 ms call beforeAndAfterZero
-    callBeforeAndAfterZero = this.time.addEvent({ 
-			delay: 1000, 
-			callback: beforeAndAfterZero, 
-			callbackScope: this, 
-			loop: true });
-
-
+		timerText = this.add.text(32, 32, convertTimeToSeconds(this.initialTime));
+		// Each 1000 ms call beforeAndAfterZero
+		callBeforeAndAfterZero = this.time.addEvent({
+			delay: 1000,
+			callback: beforeAndAfterZero,
+			callbackScope: this,
+			loop: true,
+		});
 
 		scoreText = this.add.text(30, 50, "0", {
-
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 20,
 			color: "black",
@@ -539,7 +514,6 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.collider(giovanniPlayer, pipe5);
 		this.physics.add.collider(giovanniPlayer, pipe6);
 		/* this.physics.add.collider(giovanniPlayer, groundGame); */
-
 
 		this.physics.add.collider(giovanniPlayer, reception);
 		this.physics.add.collider(giovanniPlayer, rootsCafe1);
@@ -615,14 +589,46 @@ class Giovanni extends Phaser.Scene {
 		this.cameras.main.setBounds(0, 0, 7000, 1100);
 		this.cameras.main.startFollow(giovanniPlayer);
 
-
-
-		this.physics.add.overlap(giovanniPlayer, coinGroup, this.collectCoin, null, this)
+		this.physics.add.overlap(
+			giovanniPlayer,
+			coinGroup,
+			this.collectCoin,
+			null,
+			this
+		);
 	}
-	
+	resetScore() {
+		console.log("reset score");
+	}
+	reset(world) {
+		console.log(giovanniPlayer.y > 1000);
 
+		if (giovanniPlayer.y > 1000) {
+			this.resetGameFunction();
+			this.resetScore();
+		}
+		if (patrikEnemy && this.physics.add.collider(giovanniPlayer, patrikEnemy)) {
+			this.resetGameFunction();
+			this.resetScore();
+		}
+		if (timer == 0) {
+			this.resetGameFunction();
+			this.resetScore();
+		}
+		if (resetGame > 2) {
+			this.endGame();
+		}
+	}
+	endGame() {
+		this.scene.add("highscore", HighscorePage, true);
+		this.scene.remove("Giovanni");
+	}
+
+	resetGameFunction() {
+		giovanniPlayer.setPosition(30, 700);
+	}
 	update() {
-
+		this.reset();
 		if (giovanniControls.left.isUp && giovanniControls.right.isUp) {
 			giovanniPlayer.anims.play("giovanniStand", true);
 		}
@@ -646,124 +652,49 @@ class Giovanni extends Phaser.Scene {
 		}
 
 		coins.anims.play("coinsAnimation", true);
-
-		function resetGame() {
-			giovanniPlayer.setPosition(30, 790);
-		}
-
-		function reset() {
-			if (giovanniPlayer.y > 1500) {
-				resetGame();
-				resetScore();
-			}
-
-			if (this.physics.add.collider(giovanniPlayer, patrikEnemy)) {
-				resetGame();
-				resetScore();
-			}
-			if (timer == 0) {
-				resetGame();
-				resetScore();
-			}
-			if (resetGame > 2) {
-				endGame();
-			}
-			console.log(giovanniPlayer.y);
-		}
-    
-
 		/* 		console.log(giovanniPlayer.y > 1000);
 		console.log(resetGame); */
 
-    this.timerUpdate();
-		hud = this.add.container(0, 0, [
-			timerText,
-			scoreText
-			]);
+		this.timerUpdate();
+		hud = this.add.container(0, 0, [timerText, scoreText]);
 		//lock it to the camera
 		hud.setScrollFactor(0);
-
-
-	}
-  
-
-
-
-  collectCoin (giovanniPlayer, coin) {
-	  
-		coinGroup.killAndHide(coin)
-		coinGroup.remove(coin)
-
-		coin.body.enable = false
-
-	  score += 1;
-	  scoreText.text = score + "/60"
-		console.log(score)
-	}
-	timerUpdate (timer) {
-		const date = new Date
-		console.log(date)
-
 	}
 
-	
+	collectCoin(giovanniPlayer, coin) {
+		coinGroup.killAndHide(coin);
+		coinGroup.remove(coin);
 
+		coin.body.enable = false;
 
+		score += 1;
+		scoreText.text = score + "/60";
+		console.log(score);
+	}
+	timerUpdate(timer) {
+		const date = new Date();
+		console.log(date);
+	}
 }
 
-
-
-	
-/*function reset(world) {
-	if (giovanniPlayer.y > 1000) {
-		resetGame();
-		resetScore();
-	}
-	if (this.physics.add.collider(giovanniPlayer, patrikEnemy)) {
-		resetGame();
-		resetScore();
-	}
-	if (timer == 0) {
-		resetGame();
-		resetScore();
-	}
-	if (resetGame > 2) {
-		endGame();
-	}
-
-	 		console.log(giovanniPlayer.y > 1000);
-	console.log(resetGame); 
-
-	/*function resetGame() {
-		giovanniPlayer.setPosition(30, 290);
-	}
-
-	function endGame() {
-		this.scene.add("highscore", HighscorePage, true);
-		this.scene.remove("Giovanni");
-	}
-
-
-}*/
 function convertTimeToSeconds(seconds) {
 	// Minutes
-	var minutes = Math.floor(seconds/60);
+	var minutes = Math.floor(seconds / 60);
 	// Seconds
-	var partInSeconds = seconds%60;
+	var partInSeconds = seconds % 60;
 	// Adds left zeros to seconds
-	partInSeconds = partInSeconds.toString().padStart(2,'0');
+	partInSeconds = partInSeconds.toString().padStart(2, "0");
 	// Returns formated time
 	return `00${partInSeconds}`;
 }
 
-
-
 function beforeAndAfterZero() {
 	if (this.initialTime == 0) {
-			timerText.setText(`Time's up!`)
+		timerText.setText(`Time's up!`);
 	} else {
-			this.initialTime -= 1; // One second
-			timerText.setText(convertTimeToSeconds(this.initialTime));
+		this.initialTime -= 1; // One second
+		timerText.setText(convertTimeToSeconds(this.initialTime));
 	}
 }
+
 export default Giovanni;
