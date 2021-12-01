@@ -6,7 +6,7 @@ import Giovanni from "./Giovanni.js";
 var config = {
 	type: Phaser.AUTO,
 	width: 800,
-	height: 500,
+	height: 1000,
 	scene: [Title],
 	physics: {
 		default: "arcade",
