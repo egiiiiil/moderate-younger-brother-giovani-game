@@ -11,7 +11,8 @@ let giovanniPlayer,
   	coinGroup,
 		patrikEnemy,
 		timerText,
-		callBeforeAndAfterZero
+		callBeforeAndAfterZero,
+		hud
 let resetGame = 0;
 let score = 0
 let scoreText
@@ -319,7 +320,7 @@ class Giovanni extends Phaser.Scene {
 	
 
 	update() {
-		scoreText.x = giovanniPlayer.body.position.x;
+		/* scoreText.x = giovanniPlayer.body.position.x; */
 		if (giovanniControls.left.isDown) {
 			giovanniPlayer.setVelocityX(-200);
 			giovanniPlayer.flipX = true;
@@ -337,8 +338,21 @@ class Giovanni extends Phaser.Scene {
 		}	
 		//coins.anims.play("coinsAnimation", true);
 		this.timerUpdate();
+
+
+		hud = this.add.container(0, 0, [
+			timerText,
+			scoreText
+			]);
+		//lock it to the camera
+		hud.setScrollFactor(0);
+
+
 	}
   
+
+
+
   collectCoin (giovanniPlayer, coin) {
 	  
 		coinGroup.killAndHide(coin)
