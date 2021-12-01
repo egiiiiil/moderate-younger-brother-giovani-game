@@ -4,93 +4,114 @@
 			"image": "running.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1608,
-				"h": 1896
+				"w": 320,
+				"h": 64
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "runningG2.png",
+					"filename": "jumpingG.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 64,
+						"h": 64
 					},
 					"spriteSourceSize": {
-						"x": 95,
-						"y": 31,
-						"w": 802,
-						"h": 962
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
 					},
 					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 802,
-						"h": 962
-					}
-				},
-				{
-					"filename": "runningG1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 1024,
-						"h": 1024
-					},
-					"spriteSourceSize": {
-						"x": 31,
-						"y": 63,
-						"w": 930,
-						"h": 898
-					},
-					"frame": {
-						"x": 1,
-						"y": 965,
-						"w": 930,
-						"h": 898
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
 					}
 				},
 				{
 					"filename": "runningG0.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 64,
+						"h": 64
 					},
 					"spriteSourceSize": {
-						"x": 159,
-						"y": 31,
-						"w": 706,
-						"h": 930
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
 					},
 					"frame": {
-						"x": 805,
-						"y": 1,
-						"w": 706,
-						"h": 930
+						"x": 64,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					}
+				},
+				{
+					"filename": "runningG1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 128,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					}
+				},
+				{
+					"filename": "runningG2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
+					},
+					"frame": {
+						"x": 192,
+						"y": 0,
+						"w": 64,
+						"h": 64
 					}
 				},
 				{
 					"filename": "runningG3.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1024
+						"w": 64,
+						"h": 64
 					},
 					"spriteSourceSize": {
-						"x": 159,
-						"y": 31,
-						"w": 674,
-						"h": 962
+						"x": 0,
+						"y": 0,
+						"w": 64,
+						"h": 64
 					},
 					"frame": {
-						"x": 933,
-						"y": 933,
-						"w": 674,
-						"h": 962
+						"x": 256,
+						"y": 0,
+						"w": 64,
+						"h": 64
 					}
 				}
 			]
@@ -99,6 +120,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:751985f0772077b6a3dee6b6eef0df91:e22c65ce431fffd4541b9b100fee2e69:b70094958624d86f187d26b819d8392e$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1de26496fb63db3d73802b7d7c8fba28:538b5e8ac19a5d971bb600e0b973a665:b70094958624d86f187d26b819d8392e$"
 	}
 }
