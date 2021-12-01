@@ -35,9 +35,12 @@ export default class Highscore extends Phaser.Scene {
 		this.playerText;
 	}
 
-	preload() {}
+	preload() {
+		this.load.image('black', './assets/black.png')
+	}
 
 	create() {
+		let black = this.add.tileSprite(0, 0, 800, 400, 'black');
 		this.add.text(0, 0, "NAME", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 30,
