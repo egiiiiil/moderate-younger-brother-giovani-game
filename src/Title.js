@@ -9,12 +9,12 @@ export default class TitleScene extends Phaser.Scene {
 	preload() {
 		//this.load.image('bg', './assets/bg.png')
 
-		this.load.image("bg", "./assets/bg.png");
+		this.load.image("bg", "./assets/bg_silhouette2.png");
 	}
 	create() {
-		let bg = this.add.image(0, 0, "bg");
+		let bg = this.add.image(0, 650, "bg");
 		bg.setScale(2);
-		this.add.text(50, 200, "Moderate Younger Brother Giovani Game");
+		this.add.text(50, 220, "Moderate Younger Brother Giovani Game");
 		this.add.text(50, 300, "Press any key to start");
 		this.add.text(50, 400, "■");
 
