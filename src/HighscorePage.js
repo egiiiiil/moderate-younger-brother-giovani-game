@@ -31,26 +31,51 @@ highScoreText = this.game.add.text(
 */
 export default class Highscore extends Phaser.Scene {
 	constructor() {
-		super({ key: "Highscore", active: true });
+		super({ key: "Highscore" });
 		this.playerText;
 	}
 
 	preload() {
-		this.load.image('black', './assets/black.png')
+		//this.load.image('black', './assets/black.png')
 	}
 
 	create() {
-		let black = this.add.tileSprite(0, 0, 800, 400, 'black');
+		//let black = this.add.tileSprite(0, 0, 800, 400, 'black');
+
+
+  
+
+
+
+
+
+		let oldPlayers = JSON.parse(localStorage.getItem('players'));
+		
+		oldPlayers.sort((a, b) => {
+      return b.score - a.score;
+    });
+
+		console.log(oldPlayers)
+
+
 		this.add.text(0, 0, "NAME", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 30,
 		});
-		for (let i = 0; i <= 9; i++) {
-			name = this.add.text(0, 40 + i * 32, "Name", {
-				fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-			});
-		}
-		this.add.text(200, 0, "SCORE", {
+		
+		for (let i = 0; i < oldPlayers.length && i < 5; i++) {
+      this.add
+        .text(0, 40 + i * 32,
+          this.finalScore === 1
+            ? `${[i+1]} ${oldPlayers[i].player}  :  ${oldPlayers[i].score} point`
+            : `${[i+1]} ${oldPlayers[i].player}  :  ${oldPlayers[i].score} points`,
+          /* {
+            fontFamily: "Arcade",
+            fontSize: "30px",
+          } */
+        )
+    }
+/* 		this.add.text(200, 0, "SCORE", {
 			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontSize: 30,
 		});
@@ -58,6 +83,17 @@ export default class Highscore extends Phaser.Scene {
 			score = this.add.text(200, 40 + i * 32, "Score", {
 				fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			});
-		}
+		} */
+
+
+
+		this.add.text(50, 300, "Press any key to restart");
+		this.add.text(50, 400, "■");
+
+		this.input.keyboard.on("keydown", () => {
+			this.scene.stop("GiovanniGame");
+			this.scene.start("TitleScene");
+			
+		});
 	}
 }

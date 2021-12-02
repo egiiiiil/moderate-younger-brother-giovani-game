@@ -19,8 +19,8 @@ export default class TitleScene extends Phaser.Scene {
 		this.add.text(50, 400, "■");
 
 		this.input.keyboard.on("keydown", () => {
-			this.scene.add("Giovanni", Giovanni, true);
-			this.scene.remove("TitleScene");
+			this.scene.start("GiovanniGame");
+			
 		});
 	}
 }

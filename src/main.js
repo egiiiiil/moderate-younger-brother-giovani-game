@@ -1,13 +1,13 @@
 // import Giovanni from "./Giovanni.js";
 import Title from "./Title.js";
-//import Highscore from "./HighscorePage";
 import Giovanni from "./Giovanni.js";
+import Highscore from "./HighscorePage";
 
 var config = {
 	type: Phaser.AUTO,
 	width: 800,
 	height: 1000,
-	scene: [Title],
+	scene: [Title, Giovanni, Highscore],
 	physics: {
 		default: "arcade",
 		arcade: {

@@ -33,12 +33,6 @@ class Giovanni extends Phaser.Scene {
 		);
 
 		this.load.multiatlas(
-			"runninggiovanni",
-			"./assets/runninggiovanni/running.json",
-			"./assets/runninggiovanni"
-		);
-
-		this.load.multiatlas(
 			"coins",
 			"./assets/coins/coins.json",
 			"./assets/coins"
@@ -678,7 +672,7 @@ class Giovanni extends Phaser.Scene {
 		console.log("reset score");
 	}
 	reset(world) {
-		console.log(giovanniPlayer.y > 1500);
+		//console.log(giovanniPlayer.y > 1500);
 
 		if (giovanniPlayer.y > 1200) {
 			this.resetGameFunction();
@@ -697,8 +691,8 @@ class Giovanni extends Phaser.Scene {
 		}
 	}
 	endGame() {
-		this.scene.add("highscore", HighscorePage, true);
-		this.scene.remove("Giovanni");
+		this.scene.start("Highscore");
+		
 	}
 
 	resetGameFunction() {
@@ -778,8 +772,8 @@ function beforeAndAfterZero() {
 		/* let name = prompt('name') */
 		getLocalStorage()
 		/* bg.destroy(); */
-		this.scene.add("Highscore", Highscore, true)
-		this.scene.destroy("Giovanni")
+		this.scene.start("Highscore")
+		
 	} else {
 		this.initialTime -= 1; // One second
 		timerText.setText(convertTimeToSeconds(this.initialTime));
@@ -795,10 +789,10 @@ function beforeAndAfterZero() {
 	}	
 } */
 function getLocalStorage() {
-	if (localStorage.getItem("players")) {
+	/* if (localStorage.getItem("players")) { */
 		let oldPlayers = JSON.parse(localStorage.getItem('players')) || [];
 		let newPlayer = prompt('name');
-		let newPlayerAndScore = [newPlayer, score];
+		let newPlayerAndScore = { player: newPlayer, score: score };
 		
 		oldPlayers.push(newPlayerAndScore)
 		
@@ -806,16 +800,16 @@ function getLocalStorage() {
 
 		console.log("something");
 		console.log(localStorage.getItem("players"))
-	} else {
-
+	/* } else { */
+/* 
 	
 		let oldPlayers = JSON.parse(localStorage.getItem('players')) || [];
 		let newPlayer = prompt('name');
 		let newPlayerAndScore = [newPlayer, score];
 		oldPlayers.push(newPlayerAndScore)
 		
-		localStorage.setItem('players', JSON.stringify(oldPlayers))
-		}
+		localStorage.setItem('players', JSON.stringify(oldPlayers)) */
+		/* } */
 	}
 
 export default Giovanni;
