@@ -14,8 +14,16 @@ export default class TitleScene extends Phaser.Scene {
 	create() {
 		let bg = this.add.image(0, 0, "bg");
 		bg.setScale(2);
-		this.add.text(50, 200, "Moderate Younger Brother Giovani Game");
-		this.add.text(50, 300, "Press any key to start");
+		this.add.text(50, 200, "Moderate Younger Brother Giovani Game", 						{
+			fontFamily: 'dogicabold, monospace',
+			fontSize: 20,
+			color: "white",
+		});
+		this.add.text(50, 300, "Press any key to start", 						{
+			fontFamily: 'dogicabold, monospace',
+			fontSize: 20,
+			color: "white",
+		});
 		this.add.text(50, 400, "■");
 
 		this.input.keyboard.on("keydown", () => {

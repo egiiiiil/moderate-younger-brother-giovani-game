@@ -102,12 +102,14 @@ class Giovanni extends Phaser.Scene {
 		this.add.image(400, 770, "reception");
 
 		this.add.text(340, 650, "RECEPTION", {
-			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			//fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			fontFamily: 'dogicabold, monospace',
 			fontSize: 20,
 			color: "black",
 		});
 		this.add.text(355, 620, "Hyper Island", {
-			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			//fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			fontFamily: 'dogicabold, monospace',
 			fontSize: 15,
 			color: "black",
 		});
@@ -128,7 +130,8 @@ class Giovanni extends Phaser.Scene {
 		this.add.image(860, 760, "roots2");
 
 		this.add.text(665, 750, "ROOTS", {
-			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			//fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			fontFamily: 'dogicabold, monospace',
 			fontSize: 20,
 			color: "white",
 		});
@@ -527,7 +530,11 @@ class Giovanni extends Phaser.Scene {
 			color: "black",
 		}); */
 		this.initialTime = 10;
-		timerText = this.add.text(32, 32, convertTimeToSeconds(this.initialTime));
+		timerText = this.add.text(32, 32, convertTimeToSeconds(this.initialTime), {
+							fontFamily: 'dogicabold, monospace',
+							fontSize: 20,
+							color: "black",
+						});
 		// Each 1000 ms call beforeAndAfterZero
 		callBeforeAndAfterZero = this.time.addEvent({
 			delay: 1000,
@@ -536,8 +543,9 @@ class Giovanni extends Phaser.Scene {
 			loop: true,
 		});
 
-		scoreText = this.add.text(30, 50, "0", {
-			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+		scoreText = this.add.text(30, 55, "0", {
+			//fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+			fontFamily: 'dogicabold, monospace',
 			fontSize: 20,
 			color: "black",
 		});
@@ -740,7 +748,7 @@ class Giovanni extends Phaser.Scene {
 		coin.body.enable = false;
 
 		score += 1;
-		scoreText.text = score + "/60";
+		scoreText.text = score;
 		console.log(score);
 	}
 

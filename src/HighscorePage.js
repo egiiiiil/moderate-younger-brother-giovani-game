@@ -59,8 +59,9 @@ export default class Highscore extends Phaser.Scene {
 
 
 		this.add.text(0, 0, "NAME", {
-			fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-			fontSize: 30,
+			fontFamily: 'dogicabold, monospace',
+			fontSize: 20,
+			color: "white",
 		});
 		
 		for (let i = 0; i < oldPlayers.length && i < 5; i++) {
@@ -69,10 +70,11 @@ export default class Highscore extends Phaser.Scene {
           this.finalScore === 1
             ? `${[i+1]} ${oldPlayers[i].player}  :  ${oldPlayers[i].score} point`
             : `${[i+1]} ${oldPlayers[i].player}  :  ${oldPlayers[i].score} points`,
-          /* {
-            fontFamily: "Arcade",
-            fontSize: "30px",
-          } */
+						{
+							fontFamily: 'dogicabold, monospace',
+							fontSize: 20,
+							color: "white",
+						}
         )
     }
 /* 		this.add.text(200, 0, "SCORE", {
@@ -87,7 +89,11 @@ export default class Highscore extends Phaser.Scene {
 
 
 
-		this.add.text(50, 300, "Press any key to restart");
+		this.add.text(50, 300, "Press any key to restart", 						{
+			fontFamily: 'dogicabold, monospace',
+			fontSize: 20,
+			color: "white",
+		});
 		this.add.text(50, 400, "■");
 
 		this.input.keyboard.on("keydown", () => {
