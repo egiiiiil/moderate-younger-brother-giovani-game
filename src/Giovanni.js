@@ -32,10 +32,13 @@ class Giovanni extends Phaser.Scene {
 			"./assets/runninggiovanni"
 		);
 
-		this.load.multiatlas(
+		this.load.spritesheet(
 			"coins",
-			"./assets/coins/coins.json",
-			"./assets/coins"
+			"./assets/coins/coins.png",
+			{
+				frameWidth: 32,
+				frameHeight: 32,
+			},
 		);
 
 		this.load.image("tile", "./assets/tile/tile.png");
@@ -397,20 +400,21 @@ class Giovanni extends Phaser.Scene {
 		giovanniPlayer.setCollideWorldBounds(true);
 		this.physics.world.setBounds(0, 0, 10000, 1500);
 
-		coins = this.physics.add.sprite(0, 0, "coins", "coins00.png");
-		coins.setScale(0.04);
+		
 
 		coinGroup = this.physics.add.staticGroup({
 			key: "coins",
 			frameQuantity: 84,
 			immovable: true,
 		});
-		coins.enableBody = true;
-
+		
 		var coinChildren = coinGroup.getChildren();
-
-		//for (var i = 0; i < coinChildren.length; i++) {
+		
+		
+		
 		for (var i = 0; i < coinChildren.length; i++) {
+/* 			coinChildren.physics.add.spritesheet('coins')
+			coinChildren[i].anims.play("coinsAnimation"); */
 			coinChildren[0].setPosition(200, 770);
 			coinChildren[1].setPosition(250, 770);
 			coinChildren[2].setPosition(300, 770);
@@ -529,7 +533,7 @@ class Giovanni extends Phaser.Scene {
 			fontSize: 20,
 			color: "black",
 		}); */
-		this.initialTime = 10;
+		this.initialTime = 40;
 		timerText = this.add.text(32, 32, convertTimeToSeconds(this.initialTime), {
 							fontFamily: 'dogicabold, monospace',
 							fontSize: 20,
@@ -626,7 +630,7 @@ class Giovanni extends Phaser.Scene {
 
 		/////////////////////ANIMATIONS//////////////////////
 
-		this.anims.create({
+/* 		this.anims.create({
 			key: "coinsAnimation",
 			frames: [
 				{ key: "coins", frame: "coins00.png" },
@@ -638,7 +642,19 @@ class Giovanni extends Phaser.Scene {
 			],
 			frameRate: 10,
 			repeat: 0,
-		});
+		}); */
+
+		this.anims.create({
+      key: "coinsAnimation",
+      frames: this.anims.generateFrameNumbers("coins", {
+        start: 0,
+        end: 6,
+      }),
+      frameRate: 15,
+      repeat: -1,
+    });
+
+
 		this.anims.create({
 			key: "giovanniAnimation",
 			frames: [
@@ -666,7 +682,7 @@ class Giovanni extends Phaser.Scene {
 
 		this.cameras.main.setBounds(0, 0, 7000, 1100);
 		this.cameras.main.startFollow(giovanniPlayer);
-		coins.anims.play("coinsAnimation", true);
+		
 
 		this.physics.add.overlap(
 			giovanniPlayer,
@@ -730,7 +746,8 @@ class Giovanni extends Phaser.Scene {
 			giovanniPlayer.anims.play("giovannijump", true);
 		}
 		
-		coins.anims.play("coinsAnimation", true);
+		
+
 		/* 		console.log(giovanniPlayer.y > 1000);
 		console.log(resetGame); */
 
