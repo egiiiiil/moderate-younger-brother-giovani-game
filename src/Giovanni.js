@@ -52,11 +52,21 @@ class Giovanni extends Phaser.Scene {
 		this.load.image("roots2", "./assets/roots2.png");
 		this.load.image("reception", "./assets/reception.png");
 		this.load.image("table", "./assets/table.png");
+		this.load.image("lamp", "./assets/lamp.png");
+		this.load.image("cloud1", "./assets/cloud1.png");
+		this.load.image("cloud2", "./assets/cloud2.png");
+		this.load.image("cloud3", "./assets/cloud3.png");
+		this.load.image("cloud4", "./assets/cloud4.png");
 	}
 
 	create() {
 		bg = this.add.image(0, 0, "bg");
 		bg.setScale(2);
+
+		this.add.image(400, 315, "cloud1");
+		this.add.image(700, 575, "cloud2");
+		this.add.image(2000, 575, "cloud3");
+		this.add.image(1500, 315, "cloud4");
 
 		///////////////////////////////GROUND/////////////////////////////////////////////
 		let ground1 = this.add.tileSprite(-5, 1000, 200, 400, "tile");
@@ -360,6 +370,10 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.existing(lampShade3);
 		lampShade3.body.setImmovable(true);
 		lampShade3.body.moves = false;
+
+		this.add.image(1900, 170, "lamp");
+		this.add.image(1590, 170, "lamp");
+		this.add.image(1290, 170, "lamp");
 
 		/////////////////////////////////////////////PIPES/////////////////////////////////////////////
 
