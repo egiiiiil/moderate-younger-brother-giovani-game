@@ -97,8 +97,9 @@ export default class Highscore extends Phaser.Scene {
 		this.add.text(50, 400, "■");
 
 		this.input.keyboard.on("keydown", () => {
-			this.scene.stop("GiovanniGame");
+
 			this.scene.start("TitleScene");
+			
 			
 		});
 	}

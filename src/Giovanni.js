@@ -32,10 +32,13 @@ class Giovanni extends Phaser.Scene {
 			"./assets/runninggiovanni"
 		);
 
-		this.load.multiatlas(
+		this.load.spritesheet(
 			"coins",
-			"./assets/coins/coins.json",
-			"./assets/coins"
+			"./assets/coins/coins.png",
+			{
+				frameWidth: 32,
+				frameHeight: 32,
+			},
 		);
 
 		this.load.image("tile", "./assets/tile/tile.png");
@@ -55,8 +58,17 @@ class Giovanni extends Phaser.Scene {
 	}
 
 	create() {
-		bg = this.add.image(0, 0, "bg");
-		bg.setScale(2);
+		let center = {
+			x: this.physics.world.bounds.width / 2,
+			y: this.physics.world.bounds.height / 2,
+		}
+		this.fullScreen = {
+      x: this.physics.world.bounds.width,
+      y: this.physics.world.bounds.height,
+    };
+		bg = this.add.image(center.x, center.y, "sky");
+		bg.setDisplaySize(this.fullScreen.x, this.fullScreen.y)
+		bg.setScrollFactor(0);
 
 		this.add.image(400, 315, "cloud1");
 		this.add.image(700, 575, "cloud2");
@@ -64,80 +76,80 @@ class Giovanni extends Phaser.Scene {
 		this.add.image(1500, 315, "cloud4");
 
 		///////////////////////////////GROUND/////////////////////////////////////////////
-		let ground1 = this.add.tileSprite(-5, 1000, 200, 400, "tile");
+		let ground1 = this.add.tileSprite(-5, 800, 200, 400, "tile");
 		this.physics.add.existing(ground1);
 		ground1.body.setImmovable(true);
 		ground1.body.moves = false;
-		let ground2 = this.add.tileSprite(580, 1000, 800, 400, "tile");
+		let ground2 = this.add.tileSprite(580, 800, 800, 400, "tile");
 		this.physics.add.existing(ground2);
 		ground2.body.setImmovable(true);
 		ground2.body.moves = false;
-		let ground3 = this.add.tileSprite(1450, 1000, 800, 400, "tile");
+		let ground3 = this.add.tileSprite(1450, 800, 800, 400, "tile");
 		this.physics.add.existing(ground3);
 		ground3.body.setImmovable(true);
 		ground3.body.moves = false;
-		let ground4 = this.add.tileSprite(2100, 1000, 275, 400, "tile");
+		let ground4 = this.add.tileSprite(2100, 800, 275, 400, "tile");
 		this.physics.add.existing(ground4);
 		ground4.body.setImmovable(true);
 		ground4.body.moves = false;
-		let ground5 = this.add.tileSprite(2500, 1000, 300, 400, "tile");
+		let ground5 = this.add.tileSprite(2500, 800, 300, 400, "tile");
 		this.physics.add.existing(ground5);
 		ground5.body.setImmovable(true);
 		ground5.body.moves = false;
 
 		/////////////////////////TOP PLATFORM///////////////////////////////////////
-		let ground6 = this.add.tileSprite(-5, 470, 200, 20, "tile");
+		let ground6 = this.add.tileSprite(-5, 270, 200, 20, "tile");
 		this.physics.add.existing(ground6);
 		ground6.body.setImmovable(true);
 		ground6.body.moves = false;
-		let ground7 = this.add.tileSprite(580, 470, 800, 20, "tile");
+		let ground7 = this.add.tileSprite(580, 270, 800, 20, "tile");
 		this.physics.add.existing(ground7);
 		ground7.body.setImmovable(true);
 		ground7.body.moves = false;
-		let ground8 = this.add.tileSprite(1450, 470, 800, 20, "tile");
+		let ground8 = this.add.tileSprite(1450, 270, 800, 20, "tile");
 		this.physics.add.existing(ground8);
 		ground8.body.setImmovable(true);
 		ground8.body.moves = false;
-		let ground9 = this.add.tileSprite(2100, 470, 290, 20, "tile");
+		let ground9 = this.add.tileSprite(2100, 270, 290, 20, "tile");
 		this.physics.add.existing(ground9);
 		ground9.body.setImmovable(true);
 		ground9.body.moves = false;
 
 		///////////////////////////////RECEPTION//////////////////////////////////////
-		let reception = this.add.tileSprite(400, 770, 160, 60, "tile");
+		let reception = this.add.tileSprite(400, 570, 160, 60, "tile");
 		this.physics.add.existing(reception);
 		reception.body.setImmovable(true);
 		reception.body.moves = false;
 
-		this.add.image(400, 770, "reception");
+		this.add.image(400, 570, "reception");
 
-		this.add.text(340, 650, "RECEPTION", {
+		this.add.text(340, 450, "RECEPTION", {
 			//fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontFamily: 'dogicabold, monospace',
 			fontSize: 20,
 			color: "black",
 		});
-		this.add.text(355, 620, "Hyper Island", {
+		this.add.text(355, 420, "Hyper Island", {
 			//fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
 			fontFamily: 'dogicabold, monospace',
 			fontSize: 15,
 			color: "black",
 		});
 
-		this.add.image(400, 715, "teo");
+		this.add.image(400, 515, "teo");
 
 		///////////////////////////////ROOTS CAFE///////////////////////////////////////
-		let rootsCafe1 = this.add.tileSprite(700, 770, 160, 60, "tile");
+		let rootsCafe1 = this.add.tileSprite(700, 570, 160, 60, "tile");
 		this.physics.add.existing(rootsCafe1);
 		rootsCafe1.body.setImmovable(true);
 		rootsCafe1.body.moves = false;
-		let rootsCafe2 = this.add.tileSprite(860, 760, 160, 80, "tile");
+		let rootsCafe2 = this.add.tileSprite(860, 560, 160, 80, "tile");
 		this.physics.add.existing(rootsCafe2);
 		rootsCafe2.body.setImmovable(true);
 		rootsCafe2.body.moves = false;
 
-		this.add.image(700, 770, "roots1");
-		this.add.image(860, 760, "roots2");
+		this.add.image(700, 570, "roots1");
+		this.add.image(860, 560, "roots2");
 
 		this.add.text(665, 750, "ROOTS", {
 			//fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
@@ -150,221 +162,221 @@ class Giovanni extends Phaser.Scene {
 			fontSize: 15,
 			color: "white",
 		});
-		this.add.image(845, 700, "rootdude");
+		this.add.image(845, 500, "rootdude");
 
 		/////////////////////////////SOFAS/////////////////////////////////////////////////
-		let sofa1 = this.add.tileSprite(1100, 770, 20, 60, "tile");
+		let sofa1 = this.add.tileSprite(1100, 570, 20, 60, "tile");
 		this.physics.add.existing(sofa1);
 		sofa1.body.setImmovable(true);
 		sofa1.body.moves = false;
-		let sofa2 = this.add.tileSprite(1130, 780, 40, 40, "tile");
+		let sofa2 = this.add.tileSprite(1130, 580, 40, 40, "tile");
 		this.physics.add.existing(sofa2);
 		sofa2.body.setImmovable(true);
 		sofa2.body.moves = false;
-		let sofa3 = this.add.tileSprite(1280, 780, 40, 40, "tile");
+		let sofa3 = this.add.tileSprite(1280, 580, 40, 40, "tile");
 		this.physics.add.existing(sofa3);
 		sofa3.body.setImmovable(true);
 		sofa3.body.moves = false;
-		let sofa4 = this.add.tileSprite(1310, 770, 20, 60, "tile");
+		let sofa4 = this.add.tileSprite(1310, 570, 20, 60, "tile");
 		this.physics.add.existing(sofa4);
 		sofa4.body.setImmovable(true);
 		sofa4.body.moves = false;
-		let sofa5 = this.add.tileSprite(1330, 770, 20, 60, "tile");
+		let sofa5 = this.add.tileSprite(1330, 570, 20, 60, "tile");
 		this.physics.add.existing(sofa5);
 		sofa5.body.setImmovable(true);
 		sofa5.body.moves = false;
-		let sofa6 = this.add.tileSprite(1360, 780, 40, 40, "tile");
+		let sofa6 = this.add.tileSprite(1360, 580, 40, 40, "tile");
 		this.physics.add.existing(sofa6);
 		sofa6.body.setImmovable(true);
 		sofa6.body.moves = false;
 
-		this.add.image(1120, 770, "sofa1");
-		this.add.image(1290, 770, "sofa2");
-		this.add.image(1350, 770, "sofa1");
+		this.add.image(1120, 570, "sofa1");
+		this.add.image(1290, 570, "sofa2");
+		this.add.image(1350, 570, "sofa1");
 
 		/////////////////////////////STAIRS////////////////////////////////////////////////
-		let stairs1 = this.add.tileSprite(2200, 775, 50, 50, "tile");
+		let stairs1 = this.add.tileSprite(2200, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs1);
 		stairs1.body.setImmovable(true);
 		stairs1.body.moves = false;
-		let stairs2 = this.add.tileSprite(2150, 775, 50, 50, "tile");
+		let stairs2 = this.add.tileSprite(2150, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs2);
 		stairs2.body.setImmovable(true);
 		stairs2.body.moves = false;
-		let stairs3 = this.add.tileSprite(2100, 775, 50, 50, "tile");
+		let stairs3 = this.add.tileSprite(2100, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs3);
 		stairs3.body.setImmovable(true);
 		stairs3.body.moves = false;
-		let stairs4 = this.add.tileSprite(2050, 775, 50, 50, "tile");
+		let stairs4 = this.add.tileSprite(2050, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs4);
 		stairs4.body.setImmovable(true);
 		stairs4.body.moves = false;
-		let stairs5 = this.add.tileSprite(2200, 725, 50, 50, "tile");
+		let stairs5 = this.add.tileSprite(2200, 525, 50, 50, "tile");
 		this.physics.add.existing(stairs5);
 		stairs5.body.setImmovable(true);
 		stairs5.body.moves = false;
-		let stairs6 = this.add.tileSprite(2150, 725, 50, 50, "tile");
+		let stairs6 = this.add.tileSprite(2150, 525, 50, 50, "tile");
 		this.physics.add.existing(stairs6);
 		stairs6.body.setImmovable(true);
 		stairs6.body.moves = false;
-		let stairs7 = this.add.tileSprite(2100, 725, 50, 50, "tile");
+		let stairs7 = this.add.tileSprite(2100, 525, 50, 50, "tile");
 		this.physics.add.existing(stairs7);
 		stairs7.body.setImmovable(true);
 		stairs7.body.moves = false;
-		let stairs8 = this.add.tileSprite(2200, 675, 50, 50, "tile");
+		let stairs8 = this.add.tileSprite(2200, 475, 50, 50, "tile");
 		this.physics.add.existing(stairs8);
 		stairs8.body.setImmovable(true);
 		stairs8.body.moves = false;
-		let stairs9 = this.add.tileSprite(2150, 675, 50, 50, "tile");
+		let stairs9 = this.add.tileSprite(2150, 475, 50, 50, "tile");
 		this.physics.add.existing(stairs9);
 		stairs9.body.setImmovable(true);
 		stairs9.body.moves = false;
-		let stairs10 = this.add.tileSprite(2200, 625, 50, 50, "tile");
+		let stairs10 = this.add.tileSprite(2200, 425, 50, 50, "tile");
 		this.physics.add.existing(stairs10);
 		stairs10.body.setImmovable(true);
 		stairs10.body.moves = false;
 
 		/////////////////////////RANDOM BLOCKS FOR CLIMBING////////////////////////////////////
 		///////1/////
-		let stairs11 = this.add.tileSprite(2415, 785, 50, 30, "tile");
+		let stairs11 = this.add.tileSprite(2415, 585, 50, 30, "tile");
 		this.physics.add.existing(stairs11);
 		stairs11.body.setImmovable(true);
 		stairs11.body.moves = false;
 		////////2/////
-		let stairs12 = this.add.tileSprite(2625, 775, 50, 50, "tile");
+		let stairs12 = this.add.tileSprite(2625, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs12);
 		stairs12.body.setImmovable(true);
 		stairs12.body.moves = false;
 		///////3//////
-		let stairs13 = this.add.tileSprite(2310, 735, 50, 50, "tile");
+		let stairs13 = this.add.tileSprite(2310, 535, 50, 50, "tile");
 		this.physics.add.existing(stairs13);
 		stairs13.body.setImmovable(true);
 		stairs13.body.moves = false;
 		///////4//////
-		let stairs14 = this.add.tileSprite(2520, 720, 50, 50, "tile");
+		let stairs14 = this.add.tileSprite(2520, 520, 50, 50, "tile");
 		this.physics.add.existing(stairs14);
 		stairs14.body.setImmovable(true);
 		stairs14.body.moves = false;
 		////////5//////
-		let stairs15 = this.add.tileSprite(2625, 665, 50, 50, "tile");
+		let stairs15 = this.add.tileSprite(2625, 465, 50, 50, "tile");
 		this.physics.add.existing(stairs15);
 		stairs15.body.setImmovable(true);
 		stairs15.body.moves = false;
 		///////6///////
-		let stairs16 = this.add.tileSprite(2520, 600, 50, 50, "tile");
+		let stairs16 = this.add.tileSprite(2520, 400, 50, 50, "tile");
 		this.physics.add.existing(stairs16);
 		stairs16.body.setImmovable(true);
 		stairs16.body.moves = false;
 		//////7//////
-		let stairs17 = this.add.tileSprite(2625, 545, 50, 50, "tile");
+		let stairs17 = this.add.tileSprite(2625, 345, 50, 50, "tile");
 		this.physics.add.existing(stairs17);
 		stairs17.body.setImmovable(true);
 		stairs17.body.moves = false;
 		//////8/////
-		let stairs18 = this.add.tileSprite(2520, 480, 50, 50, "tile");
+		let stairs18 = this.add.tileSprite(2520, 280, 50, 50, "tile");
 		this.physics.add.existing(stairs18);
 		stairs18.body.setImmovable(true);
 		stairs18.body.moves = false;
 		////////9//////
-		let stairs19 = this.add.tileSprite(2415, 675, 50, 50, "tile");
+		let stairs19 = this.add.tileSprite(2415, 475, 50, 50, "tile");
 		this.physics.add.existing(stairs19);
 		stairs19.body.setImmovable(true);
 		stairs19.body.moves = false;
 		//////10//////
-		let stairs20 = this.add.tileSprite(2310, 610, 50, 50, "tile");
+		let stairs20 = this.add.tileSprite(2310, 410, 50, 50, "tile");
 		this.physics.add.existing(stairs20);
 		stairs20.body.setImmovable(true);
 		stairs20.body.moves = false;
 		//////11/////
-		let stairs21 = this.add.tileSprite(2415, 545, 50, 50, "tile");
+		let stairs21 = this.add.tileSprite(2415, 345, 50, 50, "tile");
 		this.physics.add.existing(stairs21);
 		stairs21.body.setImmovable(true);
 		stairs21.body.moves = false;
 
 		//////////////////////////////////////////TABLES/////////////////////////////////////////////
 
-		let table1 = this.add.tileSprite(2100, 420, 130, 10, "tile");
+		let table1 = this.add.tileSprite(2100, 220, 130, 10, "tile");
 		this.physics.add.existing(table1);
 		table1.body.setImmovable(true);
 		table1.body.moves = false;
-		let tableLegs1 = this.add.tileSprite(2050, 443, 10, 35, "tile");
+		let tableLegs1 = this.add.tileSprite(2050, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs1);
 		tableLegs1.body.setImmovable(true);
 		tableLegs1.body.moves = false;
-		let tableLegs2 = this.add.tileSprite(2150, 443, 10, 35, "tile");
+		let tableLegs2 = this.add.tileSprite(2150, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs2);
 		tableLegs2.body.setImmovable(true);
 		tableLegs2.body.moves = false;
 
-		let table2 = this.add.tileSprite(1740, 420, 130, 10, "tile");
+		let table2 = this.add.tileSprite(1740, 220, 130, 10, "tile");
 		this.physics.add.existing(table2);
 		table2.body.setImmovable(true);
 		table2.body.moves = false;
-		let tableLegs3 = this.add.tileSprite(1690, 443, 10, 35, "tile");
+		let tableLegs3 = this.add.tileSprite(1690, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs3);
 		tableLegs3.body.setImmovable(true);
 		tableLegs3.body.moves = false;
-		let tableLegs4 = this.add.tileSprite(1790, 443, 10, 35, "tile");
+		let tableLegs4 = this.add.tileSprite(1790, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs4);
 		tableLegs4.body.setImmovable(true);
 		tableLegs4.body.moves = false;
 
-		let table3 = this.add.tileSprite(1440, 420, 130, 10, "tile");
+		let table3 = this.add.tileSprite(1440, 220, 130, 10, "tile");
 		this.physics.add.existing(table3);
 		table3.body.setImmovable(true);
 		table3.body.moves = false;
-		let tableLegs5 = this.add.tileSprite(1390, 443, 10, 35, "tile");
+		let tableLegs5 = this.add.tileSprite(1390, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs5);
 		tableLegs5.body.setImmovable(true);
 		tableLegs5.body.moves = false;
-		let tableLegs6 = this.add.tileSprite(1490, 443, 10, 35, "tile");
+		let tableLegs6 = this.add.tileSprite(1490, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs6);
 		tableLegs6.body.setImmovable(true);
 		tableLegs6.body.moves = false;
 
-		let table4 = this.add.tileSprite(1140, 420, 130, 10, "tile");
+		let table4 = this.add.tileSprite(1140, 220, 130, 10, "tile");
 		this.physics.add.existing(table4);
 		table4.body.setImmovable(true);
 		table4.body.moves = false;
-		let tableLegs7 = this.add.tileSprite(1090, 443, 10, 35, "tile");
+		let tableLegs7 = this.add.tileSprite(1090, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs7);
 		tableLegs7.body.setImmovable(true);
 		tableLegs7.body.moves = false;
-		let tableLegs8 = this.add.tileSprite(1190, 443, 10, 35, "tile");
+		let tableLegs8 = this.add.tileSprite(1190, 243, 10, 35, "tile");
 		this.physics.add.existing(tableLegs8);
 		tableLegs8.body.setImmovable(true);
 		tableLegs8.body.moves = false;
 
-		this.add.image(2100, 437, "table");
-		this.add.image(1740, 437, "table");
-		this.add.image(1440, 437, "table");
-		this.add.image(1140, 437, "table");
+		this.add.image(2100, 237, "table");
+		this.add.image(1740, 237, "table");
+		this.add.image(1440, 237, "table");
+		this.add.image(1140, 237, "table");
 
 		/////////////////////////////////////////LAMPS////////////////////////////////////////////
 
-		let lamp1 = this.add.tileSprite(1900, 150, 10, 370, "tile");
+		let lamp1 = this.add.tileSprite(1900, -20, 10, 370, "tile");
 		this.physics.add.existing(lamp1);
 		lamp1.body.setImmovable(true);
 		lamp1.body.moves = false;
-		let lampShade1 = this.add.tileSprite(1900, 350, 30, 30, "tile");
+		let lampShade1 = this.add.tileSprite(1900, 150, 30, 30, "tile");
 		this.physics.add.existing(lampShade1);
 		lampShade1.body.setImmovable(true);
 		lampShade1.body.moves = false;
 
-		let lamp2 = this.add.tileSprite(1590, 150, 10, 370, "tile");
+		let lamp2 = this.add.tileSprite(1590, -20, 10, 370, "tile");
 		this.physics.add.existing(lamp2);
 		lamp2.body.setImmovable(true);
 		lamp2.body.moves = false;
-		let lampShade2 = this.add.tileSprite(1590, 350, 30, 30, "tile");
+		let lampShade2 = this.add.tileSprite(1590, 150, 30, 30, "tile");
 		this.physics.add.existing(lampShade2);
 		lampShade2.body.setImmovable(true);
 		lampShade2.body.moves = false;
 
-		let lamp3 = this.add.tileSprite(1290, 150, 10, 370, "tile");
+		let lamp3 = this.add.tileSprite(1290, -20, 10, 370, "tile");
 		this.physics.add.existing(lamp3);
 		lamp3.body.setImmovable(true);
 		lamp3.body.moves = false;
-		let lampShade3 = this.add.tileSprite(1290, 350, 30, 30, "tile");
+		let lampShade3 = this.add.tileSprite(1290, 150, 30, 30, "tile");
 		this.physics.add.existing(lampShade3);
 		lampShade3.body.setImmovable(true);
 		lampShade3.body.moves = false;
@@ -375,34 +387,34 @@ class Giovanni extends Phaser.Scene {
 
 		/////////////////////////////////////////////PIPES/////////////////////////////////////////////
 
-		let pipe1 = this.add.tileSprite(1700, 580, 60, 200, "tile");
+		let pipe1 = this.add.tileSprite(1700, 380, 60, 200, "tile");
 		this.physics.add.existing(pipe1);
 		pipe1.body.setImmovable(true);
 		pipe1.body.moves = false;
-		let pipe2 = this.add.tileSprite(1500, 580, 60, 200, "tile");
+		let pipe2 = this.add.tileSprite(1500, 380, 60, 200, "tile");
 		this.physics.add.existing(pipe2);
 		pipe2.body.setImmovable(true);
 		pipe2.body.moves = false;
-		let pipe3 = this.add.tileSprite(1700, 845, 60, 200, "tile");
+		let pipe3 = this.add.tileSprite(1700, 645, 60, 200, "tile");
 		this.physics.add.existing(pipe3);
 		pipe3.body.setImmovable(true);
 		pipe3.body.moves = false;
-		let pipe4 = this.add.tileSprite(1500, 845, 60, 200, "tile");
+		let pipe4 = this.add.tileSprite(1500, 645, 60, 200, "tile");
 		this.physics.add.existing(pipe4);
 		pipe4.body.setImmovable(true);
 		pipe4.body.moves = false;
-		let pipe5 = this.add.tileSprite(250, 445, 60, 60, "tile");
+		let pipe5 = this.add.tileSprite(250, 245, 60, 60, "tile");
 		this.physics.add.existing(pipe5);
 		pipe5.body.setImmovable(true);
 		pipe5.body.moves = false;
-		let pipe6 = this.add.tileSprite(900, 445, 60, 60, "tile");
+		let pipe6 = this.add.tileSprite(900, 245, 60, 60, "tile");
 		this.physics.add.existing(pipe6);
 		pipe6.body.setImmovable(true);
 		pipe6.body.moves = false;
 
 		giovanniPlayer = this.physics.add.sprite(
 			30,
-			770,
+			570,
 			"runninggiovanni",
 			"runningG0.png"
 		);
@@ -411,125 +423,126 @@ class Giovanni extends Phaser.Scene {
 		giovanniPlayer.setCollideWorldBounds(true);
 		this.physics.world.setBounds(0, 0, 10000, 1500);
 
-		coins = this.physics.add.sprite(0, 0, "coins", "coins00.png");
-		coins.setScale(0.04);
+		
 
 		coinGroup = this.physics.add.staticGroup({
 			key: "coins",
 			frameQuantity: 84,
 			immovable: true,
 		});
-		coins.enableBody = true;
-
-		var coinChildren = coinGroup.getChildren();
-
-		//for (var i = 0; i < coinChildren.length; i++) {
-		for (var i = 0; i < coinChildren.length; i++) {
-			coinChildren[0].setPosition(200, 770);
-			coinChildren[1].setPosition(250, 770);
-			coinChildren[2].setPosition(300, 770);
-			
-			coinChildren[6].setPosition(500, 770);
-			coinChildren[7].setPosition(550, 770);
-			coinChildren[8].setPosition(600, 770);
 		
-		   coinChildren[16].setPosition(200, 720);
-		   coinChildren[17].setPosition(250, 720);
-		   coinChildren[18].setPosition(300, 720);
+		var coinChildren = coinGroup.getChildren();
+		
+		
+		
+		for (var i = 0; i < coinChildren.length; i++) {
+/* 			coinChildren.physics.add.spritesheet('coins')
+			coinChildren[i].anims.play("coinsAnimation"); */
+			coinChildren[0].setPosition(200, 570);
+			coinChildren[1].setPosition(250, 570);
+			coinChildren[2].setPosition(300, 570);
+			
+			coinChildren[6].setPosition(500, 570);
+			coinChildren[7].setPosition(550, 570);
+			coinChildren[8].setPosition(600, 570);
+		
+		   coinChildren[16].setPosition(200, 520);
+		   coinChildren[17].setPosition(250, 520);
+		   coinChildren[18].setPosition(300, 520);
 		  
-		   coinChildren[22].setPosition(500, 720);
-		   coinChildren[23].setPosition(550, 720);
-		   coinChildren[24].setPosition(600, 720);
-		   coinChildren[25].setPosition(650, 720);
-		   coinChildren[26].setPosition(700, 720);
-		   coinChildren[27].setPosition(750, 720);
-		   coinChildren[28].setPosition(810, 670);
+		   coinChildren[22].setPosition(500, 520);
+		   coinChildren[23].setPosition(550, 520);
+		   coinChildren[24].setPosition(600, 520);
+		   coinChildren[25].setPosition(650, 520);
+		   coinChildren[26].setPosition(700, 520);
+		   coinChildren[27].setPosition(750, 520);
+		   coinChildren[28].setPosition(810, 470);
 		   coinChildren[29].setPosition(860, 620);
-		   coinChildren[30].setPosition(910, 670);
+		   coinChildren[30].setPosition(910, 470);
 		   
-		   coinChildren[34].setPosition(1200, 770);
-		   coinChildren[38].setPosition(1400, 770);
-		   coinChildren[39].setPosition(1450, 770);
+		   coinChildren[34].setPosition(1200, 570);
+		   coinChildren[38].setPosition(1400, 570);
+		   coinChildren[39].setPosition(1450, 570);
 
-			coinChildren[40].setPosition(1550, 770);
-			coinChildren[41].setPosition(1600, 770);
-		   coinChildren[42].setPosition(1150, 670);
-		   coinChildren[43].setPosition(1200, 670);
-		   coinChildren[44].setPosition(1250, 670);
+			coinChildren[40].setPosition(1550, 570);
+			coinChildren[41].setPosition(1600, 570);
+		   coinChildren[42].setPosition(1150, 470);
+		   coinChildren[43].setPosition(1200, 470);
+		   coinChildren[44].setPosition(1250, 470);
 
-		   coinChildren[45].setPosition(1600, 670);
-		   coinChildren[46].setPosition(1650, 770);
+		   coinChildren[45].setPosition(1600, 470);
+		   coinChildren[46].setPosition(1650, 570);
 
 		   coinChildren[9].setPosition(1900, 500);
 
-		   coinChildren[59].setPosition(2000, 720);
-		   coinChildren[3].setPosition(2000, 770);
-			coinChildren[4].setPosition(2050, 720);
-			coinChildren[5].setPosition(2100, 670);
+		   coinChildren[59].setPosition(2000, 520);
+		   coinChildren[3].setPosition(2000, 570);
+			coinChildren[4].setPosition(2050, 520);
+			coinChildren[5].setPosition(2100, 470);
 
-		   coinChildren[10].setPosition(2150, 620);
-		   coinChildren[11].setPosition(2200, 570);
-		   coinChildren[12].setPosition(2850, 500);
-		   coinChildren[13].setPosition(2520, 770);
-		   coinChildren[14].setPosition(2520, 420);
-		   coinChildren[15].setPosition(2310, 670);
+		   coinChildren[10].setPosition(2150, 220);
+		   coinChildren[11].setPosition(2200, 170);
+		   coinChildren[12].setPosition(2850, 100);
+		   coinChildren[13].setPosition(2520, 370);
+		   coinChildren[14].setPosition(2520, 20);
+		   coinChildren[15].setPosition(2310, 70);
 
-		    coinChildren[19].setPosition(2520, 670);
-		   coinChildren[20].setPosition(2700, 700);
-		   coinChildren[21].setPosition(2520, 540);
+		    coinChildren[19].setPosition(2520, 330);
+		   coinChildren[20].setPosition(2700, 380);
+		   coinChildren[21].setPosition(2520, 140);
 
 		   coinChildren[31].setPosition(1900, 400);
-		   coinChildren[32].setPosition(1950, 350);
-		   coinChildren[33].setPosition(1850, 350);
-		   coinChildren[35].setPosition(1800, 350);
-		   coinChildren[36].setPosition(1750, 350);
-		   coinChildren[37].setPosition(1700, 350);
+		   coinChildren[32].setPosition(1950, 150);
+		   coinChildren[33].setPosition(1850, 150);
+		   coinChildren[35].setPosition(1800, 150);
+		   coinChildren[36].setPosition(1750, 150);
+		   coinChildren[37].setPosition(1700, 150);
 
-		    coinChildren[47].setPosition(1650, 350);
-		   coinChildren[48].setPosition(1550, 350);
-		   coinChildren[49].setPosition(1500, 350);
+		    coinChildren[47].setPosition(1650, 150);
+		   coinChildren[48].setPosition(1550, 150);
+		   coinChildren[49].setPosition(1500, 150);
 		   coinChildren[50].setPosition(1450, 350);
 		   coinChildren[51].setPosition(1400, 350);
-		   coinChildren[52].setPosition(1350, 350);
+		   coinChildren[52].setPosition(1350, 150);
 
-		   coinChildren[53].setPosition(1250, 350);
-		   coinChildren[54].setPosition(1200, 350);
-		   coinChildren[55].setPosition(1150, 350);
-		   coinChildren[56].setPosition(1100, 350);
-		   coinChildren[57].setPosition(1050, 350);
+		   coinChildren[53].setPosition(1250, 150);
+		   coinChildren[54].setPosition(1200, 150);
+		   coinChildren[55].setPosition(1150, 150);
+		   coinChildren[56].setPosition(1100, 150);
+		   coinChildren[57].setPosition(1050, 150);
 
-		   coinChildren[58].setPosition(900, 350);
+		   coinChildren[58].setPosition(900, 150);
 
 		   //UNFIXED COINS DOWN HERE
 
-		   coinChildren[60].setPosition(850, 400);
-		   coinChildren[61].setPosition(800, 400);
-		   coinChildren[62].setPosition(750, 400);
-		   coinChildren[63].setPosition(700, 400);
-		   coinChildren[64].setPosition(650, 400);
-		   coinChildren[65].setPosition(600, 400);
+		   coinChildren[60].setPosition(850, 190);
+		   coinChildren[61].setPosition(800, 190);
+		   coinChildren[62].setPosition(750, 190);
+		   coinChildren[63].setPosition(700, 190);
+		   coinChildren[64].setPosition(650, 190);
+		   coinChildren[65].setPosition(600, 190);
 
-		   coinChildren[66].setPosition(550, 400);
-		   coinChildren[67].setPosition(500, 400);
-		   coinChildren[68].setPosition(450, 400);
-		   coinChildren[69].setPosition(400, 400);
-		   coinChildren[70].setPosition(350, 400);
+		   coinChildren[66].setPosition(550, 190);
+		   coinChildren[67].setPosition(500, 190);
+		   coinChildren[68].setPosition(450, 190);
+		   coinChildren[69].setPosition(400, 190);
+		   coinChildren[70].setPosition(350, 190);
 
-		   coinChildren[71].setPosition(300, 400);
+		   coinChildren[71].setPosition(300, 190);
 
-		   coinChildren[72].setPosition(250, 400);
-		   coinChildren[73].setPosition(200, 400);
-		   coinChildren[74].setPosition(150, 400);
-		   coinChildren[75].setPosition(100, 400);
-		   coinChildren[76].setPosition(50, 400);
+		   coinChildren[72].setPosition(250, 190);
+		   coinChildren[73].setPosition(200, 190);
+		   coinChildren[74].setPosition(150, 190);
+		   coinChildren[75].setPosition(100, 190);
+		   coinChildren[76].setPosition(50, 190);
 
 
-		   coinChildren[77].setPosition(300, 400);
-		   coinChildren[78].setPosition(250, 400);
-		   coinChildren[79].setPosition(200, 400);
-		   coinChildren[80].setPosition(150, 400);
-		   coinChildren[81].setPosition(100, 400);
-		   coinChildren[82].setPosition(50, 400);
+		   coinChildren[77].setPosition(300, 190);
+		   coinChildren[78].setPosition(250, 190);
+		   coinChildren[79].setPosition(200, 190);
+		   coinChildren[80].setPosition(150, 190);
+		   coinChildren[81].setPosition(100, 190);
+		   coinChildren[82].setPosition(50, 190);
 
 		   coinChildren[83].setPosition(140, 500);
 
@@ -543,6 +556,7 @@ class Giovanni extends Phaser.Scene {
 			fontSize: 20,
 			color: "black",
 		}); */
+		//this.initialTime = 40;
 		this.initialTime = 10;
 		timerText = this.add.text(32, 32, convertTimeToSeconds(this.initialTime), {
 							fontFamily: 'dogicabold, monospace',
@@ -640,7 +654,7 @@ class Giovanni extends Phaser.Scene {
 
 		/////////////////////ANIMATIONS//////////////////////
 
-		this.anims.create({
+/* 		this.anims.create({
 			key: "coinsAnimation",
 			frames: [
 				{ key: "coins", frame: "coins00.png" },
@@ -652,7 +666,19 @@ class Giovanni extends Phaser.Scene {
 			],
 			frameRate: 10,
 			repeat: 0,
-		});
+		}); */
+
+		this.anims.create({
+      key: "coinsAnimation",
+      frames: this.anims.generateFrameNumbers("coins", {
+        start: 0,
+        end: 6,
+      }),
+      frameRate: 15,
+      repeat: -1,
+    });
+
+
 		this.anims.create({
 			key: "giovanniAnimation",
 			frames: [
@@ -680,7 +706,7 @@ class Giovanni extends Phaser.Scene {
 
 		this.cameras.main.setBounds(0, 0, 7000, 1100);
 		this.cameras.main.startFollow(giovanniPlayer);
-		coins.anims.play("coinsAnimation", true);
+		
 
 		this.physics.add.overlap(
 			giovanniPlayer,
@@ -718,7 +744,7 @@ class Giovanni extends Phaser.Scene {
 	}
 
 	resetGameFunction() {
-		giovanniPlayer.setPosition(30, 700);
+		giovanniPlayer.setPosition(30, 530);
 	}
 	update() {
 		this.reset();
@@ -744,7 +770,8 @@ class Giovanni extends Phaser.Scene {
 			giovanniPlayer.anims.play("giovannijump", true);
 		}
 		
-		coins.anims.play("coinsAnimation", true);
+		
+
 		/* 		console.log(giovanniPlayer.y > 1000);
 		console.log(resetGame); */
 
@@ -815,7 +842,7 @@ function getLocalStorage() {
 		let oldPlayers = JSON.parse(localStorage.getItem('players')) || [];
 		let newPlayer = prompt('name');
 		let newPlayerAndScore = { player: newPlayer, score: score };
-		
+		score = 0;
 		oldPlayers.push(newPlayerAndScore)
 		
 		localStorage.setItem('players', JSON.stringify(oldPlayers))

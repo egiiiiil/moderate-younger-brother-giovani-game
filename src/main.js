@@ -6,7 +6,7 @@ import Highscore from "./HighscorePage";
 var config = {
 	type: Phaser.AUTO,
 	width: 800,
-	height: 1000,
+	height: 750,
 	scene: [Title, Giovanni, Highscore],
 	physics: {
 		default: "arcade",
