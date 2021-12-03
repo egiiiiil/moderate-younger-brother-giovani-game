@@ -70,10 +70,10 @@ class Giovanni extends Phaser.Scene {
 		bg.setDisplaySize(this.fullScreen.x, this.fullScreen.y)
 		bg.setScrollFactor(0);
 
-		this.add.image(400, 315, "cloud1");
+		/*this.add.image(400, 315, "cloud1");
 		this.add.image(700, 575, "cloud2");
 		this.add.image(2000, 575, "cloud3");
-		this.add.image(1500, 315, "cloud4");
+		this.add.image(1500, 315, "cloud4");*/
 
 		///////////////////////////////GROUND/////////////////////////////////////////////
 		let ground1 = this.add.tileSprite(-5, 800, 200, 400, "tile");
@@ -354,36 +354,36 @@ class Giovanni extends Phaser.Scene {
 
 		/////////////////////////////////////////LAMPS////////////////////////////////////////////
 
-		let lamp1 = this.add.tileSprite(1900, -20, 10, 370, "tile");
+		let lamp1 = this.add.tileSprite(1900, 0, 10, 370, "tile");
 		this.physics.add.existing(lamp1);
 		lamp1.body.setImmovable(true);
 		lamp1.body.moves = false;
-		let lampShade1 = this.add.tileSprite(1900, 150, 30, 30, "tile");
+		let lampShade1 = this.add.tileSprite(1900, 165, 30, 30, "tile");
 		this.physics.add.existing(lampShade1);
 		lampShade1.body.setImmovable(true);
 		lampShade1.body.moves = false;
 
-		let lamp2 = this.add.tileSprite(1590, -20, 10, 370, "tile");
+		let lamp2 = this.add.tileSprite(1590, 0, 10, 370, "tile");
 		this.physics.add.existing(lamp2);
 		lamp2.body.setImmovable(true);
 		lamp2.body.moves = false;
-		let lampShade2 = this.add.tileSprite(1590, 150, 30, 30, "tile");
+		let lampShade2 = this.add.tileSprite(1590, 165, 30, 30, "tile");
 		this.physics.add.existing(lampShade2);
 		lampShade2.body.setImmovable(true);
 		lampShade2.body.moves = false;
 
-		let lamp3 = this.add.tileSprite(1290, -20, 10, 370, "tile");
+		let lamp3 = this.add.tileSprite(1290, 0, 10, 370, "tile");
 		this.physics.add.existing(lamp3);
 		lamp3.body.setImmovable(true);
 		lamp3.body.moves = false;
-		let lampShade3 = this.add.tileSprite(1290, 150, 30, 30, "tile");
+		let lampShade3 = this.add.tileSprite(1290, 165, 30, 30, "tile");
 		this.physics.add.existing(lampShade3);
 		lampShade3.body.setImmovable(true);
 		lampShade3.body.moves = false;
 
-		this.add.image(1900, 170, "lamp");
-		this.add.image(1590, 170, "lamp");
-		this.add.image(1290, 170, "lamp");
+		this.add.image(1900, -15, "lamp");
+		this.add.image(1590, -15, "lamp");
+		this.add.image(1290, -15, "lamp");
 
 		/////////////////////////////////////////////PIPES/////////////////////////////////////////////
 
@@ -438,6 +438,8 @@ class Giovanni extends Phaser.Scene {
 		for (var i = 0; i < coinChildren.length; i++) {
 /* 			coinChildren.physics.add.spritesheet('coins')
 			coinChildren[i].anims.play("coinsAnimation"); */
+
+//LOWER LEFT COINS			
 			coinChildren[0].setPosition(200, 570);
 			coinChildren[1].setPosition(250, 570);
 			coinChildren[2].setPosition(300, 570);
@@ -457,9 +459,10 @@ class Giovanni extends Phaser.Scene {
 		   coinChildren[26].setPosition(700, 520);
 		   coinChildren[27].setPosition(750, 520);
 		   coinChildren[28].setPosition(810, 470);
-		   coinChildren[29].setPosition(860, 620);
+		   coinChildren[29].setPosition(860, 420);
 		   coinChildren[30].setPosition(910, 470);
 		   
+//MIDDLE LOWER COINS		   
 		   coinChildren[34].setPosition(1200, 570);
 		   coinChildren[38].setPosition(1400, 570);
 		   coinChildren[39].setPosition(1450, 570);
@@ -480,18 +483,22 @@ class Giovanni extends Phaser.Scene {
 			coinChildren[4].setPosition(2050, 520);
 			coinChildren[5].setPosition(2100, 470);
 
-		   coinChildren[10].setPosition(2150, 220);
-		   coinChildren[11].setPosition(2200, 170);
-		   coinChildren[12].setPosition(2850, 100);
-		   coinChildren[13].setPosition(2520, 370);
-		   coinChildren[14].setPosition(2520, 20);
-		   coinChildren[15].setPosition(2310, 70);
+			//COINS TO THE RIGHT
 
-		    coinChildren[19].setPosition(2520, 330);
-		   coinChildren[20].setPosition(2700, 380);
-		   coinChildren[21].setPosition(2520, 140);
+		   coinChildren[10].setPosition(2150, 420);
+		   coinChildren[11].setPosition(2200, 370);
 
-		   coinChildren[31].setPosition(1900, 400);
+		   coinChildren[12].setPosition(2750, 420);
+		   coinChildren[13].setPosition(2520, 340);
+		   coinChildren[14].setPosition(2520, 220);
+		   coinChildren[15].setPosition(2310, 370);
+
+		    coinChildren[19].setPosition(2520, 470);
+		   coinChildren[20].setPosition(2770, 280);
+		   coinChildren[21].setPosition(2520, 570);
+
+// UPPER MIDDLE COINS
+		   coinChildren[31].setPosition(1900, 300);
 		   coinChildren[32].setPosition(1950, 150);
 		   coinChildren[33].setPosition(1850, 150);
 		   coinChildren[35].setPosition(1800, 150);
@@ -501,8 +508,8 @@ class Giovanni extends Phaser.Scene {
 		    coinChildren[47].setPosition(1650, 150);
 		   coinChildren[48].setPosition(1550, 150);
 		   coinChildren[49].setPosition(1500, 150);
-		   coinChildren[50].setPosition(1450, 350);
-		   coinChildren[51].setPosition(1400, 350);
+		   coinChildren[50].setPosition(1450, 150);
+		   coinChildren[51].setPosition(1400, 150);
 		   coinChildren[52].setPosition(1350, 150);
 
 		   coinChildren[53].setPosition(1250, 150);
@@ -513,14 +520,14 @@ class Giovanni extends Phaser.Scene {
 
 		   coinChildren[58].setPosition(900, 150);
 
-		   //UNFIXED COINS DOWN HERE
-
 		   coinChildren[60].setPosition(850, 190);
 		   coinChildren[61].setPosition(800, 190);
 		   coinChildren[62].setPosition(750, 190);
 		   coinChildren[63].setPosition(700, 190);
 		   coinChildren[64].setPosition(650, 190);
 		   coinChildren[65].setPosition(600, 190);
+
+		   //UPPER LEFT COINS
 
 		   coinChildren[66].setPosition(550, 190);
 		   coinChildren[67].setPosition(500, 190);
@@ -536,15 +543,14 @@ class Giovanni extends Phaser.Scene {
 		   coinChildren[75].setPosition(100, 190);
 		   coinChildren[76].setPosition(50, 190);
 
-
-		   coinChildren[77].setPosition(300, 190);
-		   coinChildren[78].setPosition(250, 190);
-		   coinChildren[79].setPosition(200, 190);
-		   coinChildren[80].setPosition(150, 190);
-		   coinChildren[81].setPosition(100, 190);
-		   coinChildren[82].setPosition(50, 190);
-
-		   coinChildren[83].setPosition(140, 500);
+//UPPER LEFT COINS
+		   coinChildren[77].setPosition(300, 140);
+		   coinChildren[78].setPosition(250, 140);
+		   coinChildren[79].setPosition(200, 140);
+		   coinChildren[80].setPosition(150, 140);
+		   coinChildren[81].setPosition(100, 140);
+		   coinChildren[82].setPosition(50, 140);
+		   coinChildren[83].setPosition(140, 300);
 
 
 		}
@@ -557,7 +563,7 @@ class Giovanni extends Phaser.Scene {
 			color: "black",
 		}); */
 		//this.initialTime = 40;
-		this.initialTime = 10;
+		this.initialTime = 40;
 		timerText = this.add.text(32, 32, convertTimeToSeconds(this.initialTime), {
 							fontFamily: 'dogicabold, monospace',
 							fontSize: 20,
