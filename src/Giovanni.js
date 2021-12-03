@@ -65,6 +65,8 @@ class Giovanni extends Phaser.Scene {
 		this.load.image("stairs", "./assets/stairs.png");
 		this.load.image("blocks", "./assets/blocks.png");
 		this.load.image("grass", "./assets/grass.png");
+		this.load.image("pipes", "./assets/pipes.png");
+		this.load.image("pipes2", "./assets/pipes2.jpeg");
 	}
 
 	create() {
@@ -530,26 +532,43 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.existing(pipe1);
 		pipe1.body.setImmovable(true);
 		pipe1.body.moves = false;
+
+		this.add.image(1700, 580, "pipes2");
+
 		let pipe2 = this.add.tileSprite(1500, 580, 60, 200, "tile");
 		this.physics.add.existing(pipe2);
 		pipe2.body.setImmovable(true);
 		pipe2.body.moves = false;
+
+		this.add.image(1501, 580, "pipes2");
+
 		let pipe3 = this.add.tileSprite(1700, 845, 60, 200, "tile");
 		this.physics.add.existing(pipe3);
 		pipe3.body.setImmovable(true);
 		pipe3.body.moves = false;
+
+		this.add.image(1700, 800, "pipes");
+
 		let pipe4 = this.add.tileSprite(1500, 845, 60, 200, "tile");
 		this.physics.add.existing(pipe4);
 		pipe4.body.setImmovable(true);
 		pipe4.body.moves = false;
+
+		this.add.image(1500, 800, "pipes");
+
 		let pipe5 = this.add.tileSprite(250, 445, 60, 60, "tile");
 		this.physics.add.existing(pipe5);
 		pipe5.body.setImmovable(true);
 		pipe5.body.moves = false;
+
+		this.add.image(250, 444, "pipes");
+
 		let pipe6 = this.add.tileSprite(900, 445, 60, 60, "tile");
 		this.physics.add.existing(pipe6);
 		pipe6.body.setImmovable(true);
 		pipe6.body.moves = false;
+
+		this.add.image(900, 444, "pipes");
 
 		giovanniPlayer = this.physics.add.sprite(
 			30,
