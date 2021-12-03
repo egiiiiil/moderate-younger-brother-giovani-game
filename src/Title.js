@@ -9,6 +9,7 @@ export default class TitleScene extends Phaser.Scene {
 	preload() {
 		//this.load.image('bg', './assets/bg.png')
 
+
 		this.load.image("sky", "./assets/sky.png");
 	}
 	create() {
@@ -38,6 +39,7 @@ export default class TitleScene extends Phaser.Scene {
 			fontSize: 20,
 			color: "black",
 		});
+
 
 		this.input.keyboard.on("keydown", () => {
 			

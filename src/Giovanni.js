@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { Tile } from "phaser/src/tilemaps";
+import { CullBounds } from "phaser/src/tilemaps/components";
 import Highscore from "./HighscorePage";
 
 let giovanniPlayer,
@@ -51,13 +52,107 @@ class Giovanni extends Phaser.Scene {
 		this.load.image("reception", "./assets/reception.png");
 		this.load.image("table", "./assets/table.png");
 		this.load.image("lamp", "./assets/lamp.png");
-		this.load.image("cloud1", "./assets/cloud1.png");
-		this.load.image("cloud2", "./assets/cloud2.png");
-		this.load.image("cloud3", "./assets/cloud3.png");
-		this.load.image("cloud4", "./assets/cloud4.png");
+		this.load.image("cloud", "./assets/cloud.png");
+		this.load.image("ground1", "./assets/ground200x20.jpeg");
+		this.load.image("ground2", "./assets/ground290x20.jpeg");
+		this.load.image("ground3", "./assets/ground800x20.jpeg");
+		this.load.image("ground4", "./assets/ground200x400.png");
+		this.load.image("ground5", "./assets/ground800x400.png");
+		this.load.image("ground6", "./assets/ground275x400.png");
+		this.load.image("ground7", "./assets/ground300x400.png");
+		this.load.image("stairs", "./assets/stairs.png");
+		this.load.image("blocks", "./assets/blocks.png");
+		this.load.image("grass", "./assets/grass.png");
+		this.load.image("pipes", "./assets/pipes.png");
+		this.load.image("pipes2", "./assets/pipes2.jpeg");
 	}
 
 	create() {
+
+		bg = this.add.image(0, 600, "bg");
+		bg.setScale(4, 2.2);
+		//////////////////////////////////CLOUDS//////////////////////////////////////
+		/*let cloud = this.add.image(200, 315, "cloud");
+		cloud.setScale(3);
+		let cloud1 = this.add.image(400, 345, "cloud");
+		cloud1.setScale(5);
+		let cloud2 = this.add.image(600, 365, "cloud");
+		cloud2.setScale(4);
+		let cloud3 = this.add.image(800, 315, "cloud");
+		cloud3.setScale(6);
+		let cloud4 = this.add.image(1000, 355, "cloud");
+		cloud4.setScale(4);
+		let cloud5 = this.add.image(1200, 325, "cloud");
+		cloud5.setScale(2);
+		let cloud6 = this.add.image(1300, 375, "cloud");
+		cloud6.setScale(4);
+		let cloud7 = this.add.image(1500, 315, "cloud");
+		cloud7.setScale(6);
+		let cloud8 = this.add.image(1700, 335, "cloud");
+		cloud8.setScale(4);
+		let cloud9 = this.add.image(1900, 355, "cloud");
+		cloud9.setScale(3);
+		let cloud10 = this.add.image(2100, 325, "cloud");
+		cloud10.setScale(5);
+		let cloud11 = this.add.image(2300, 375, "cloud");
+		cloud11.setScale(2);
+		let cloud12 = this.add.image(2400, 335, "cloud");
+		cloud12.setScale(3);
+
+		let cloud13 = this.add.image(300, 625, "cloud");
+		cloud13.setScale(4);
+		let cloud14 = this.add.image(500, 635, "cloud");
+		cloud14.setScale(5);
+		let cloud15 = this.add.image(700, 550, "cloud");
+		cloud15.setScale(2);
+		let cloud16 = this.add.image(900, 655, "cloud");
+		cloud16.setScale(5);
+		let cloud17 = this.add.image(1100, 635, "cloud");
+		cloud17.setScale(4);
+		let cloud18 = this.add.image(1300, 665, "cloud");
+		cloud18.setScale(2);
+		let cloud19 = this.add.image(1500, 645, "cloud");
+		cloud19.setScale(6);
+		let cloud20 = this.add.image(1700, 675, "cloud");
+		cloud20.setScale(3);
+		let cloud21 = this.add.image(1900, 625, "cloud");
+		cloud21.setScale(5);
+		let cloud22 = this.add.image(2100, 655, "cloud");
+		cloud22.setScale(2);
+		let cloud23 = this.add.image(2300, 665, "cloud");
+		cloud23.setScale(5);
+		let cloud24 = this.add.image(2500, 625, "cloud");
+		cloud24.setScale(4);
+		let cloud25 = this.add.image(2700, 665, "cloud");
+		cloud25.setScale(3);*/
+
+		///////////////////////////////GRASS//////////////////////////////////////
+		let grass = this.add.image(260, 780, "grass");
+		grass.setScale(0.4);
+		let grass1 = this.add.image(560, 780, "grass");
+		grass1.setScale(0.4);
+		let grass2 = this.add.image(1200, 780, "grass");
+		grass2.setScale(0.4);
+		let grass3 = this.add.image(1600, 780, "grass");
+		grass3.setScale(0.4);
+		let grass4 = this.add.image(1790, 780, "grass");
+		grass4.setScale(0.4);
+		let grass5 = this.add.image(2050, 780, "grass");
+		grass5.setScale(0.4);
+
+		let grass6 = this.add.image(460, 440, "grass");
+		grass6.setScale(0.4);
+		let grass7 = this.add.image(660, 440, "grass");
+		grass7.setScale(0.4);
+		let grass8 = this.add.image(1150, 440, "grass");
+		grass8.setScale(0.4);
+		let grass9 = this.add.image(1300, 440, "grass");
+		grass9.setScale(0.4);
+		let grass10 = this.add.image(1570, 440, "grass");
+		grass10.setScale(0.4);
+		let grass11 = this.add.image(2100, 440, "grass");
+		grass11.setScale(0.4);
+
 		let center = {
 			x: this.physics.world.bounds.width / 2,
 			y: this.physics.world.bounds.height / 2,
@@ -75,11 +170,39 @@ class Giovanni extends Phaser.Scene {
 		this.add.image(2000, 575, "cloud3");
 		this.add.image(1500, 315, "cloud4");*/
 
+
 		///////////////////////////////GROUND/////////////////////////////////////////////
 		let ground1 = this.add.tileSprite(-5, 800, 200, 400, "tile");
 		this.physics.add.existing(ground1);
 		ground1.body.setImmovable(true);
 		ground1.body.moves = false;
+
+
+		this.add.image(-5, 995, "ground4");
+
+		let ground2 = this.add.tileSprite(580, 1000, 800, 400, "tile");
+		this.physics.add.existing(ground2);
+		ground2.body.setImmovable(true);
+		ground2.body.moves = false;
+
+		this.add.image(580, 990, "ground5");
+
+		let ground3 = this.add.tileSprite(1450, 1000, 800, 400, "tile");
+		this.physics.add.existing(ground3);
+		ground3.body.setImmovable(true);
+		ground3.body.moves = false;
+
+		this.add.image(1450, 990, "ground5");
+
+		let ground4 = this.add.tileSprite(2100, 1000, 275, 400, "tile");
+		this.physics.add.existing(ground4);
+		ground4.body.setImmovable(true);
+		ground4.body.moves = false;
+
+		this.add.image(2100, 990, "ground6");
+
+		let ground5 = this.add.tileSprite(2500, 1000, 300, 400, "tile");
+
 		let ground2 = this.add.tileSprite(580, 800, 800, 400, "tile");
 		this.physics.add.existing(ground2);
 		ground2.body.setImmovable(true);
@@ -93,15 +216,38 @@ class Giovanni extends Phaser.Scene {
 		ground4.body.setImmovable(true);
 		ground4.body.moves = false;
 		let ground5 = this.add.tileSprite(2500, 800, 300, 400, "tile");
+
 		this.physics.add.existing(ground5);
 		ground5.body.setImmovable(true);
 		ground5.body.moves = false;
+
+		this.add.image(2500, 990, "ground7");
 
 		/////////////////////////TOP PLATFORM///////////////////////////////////////
 		let ground6 = this.add.tileSprite(-5, 270, 200, 20, "tile");
 		this.physics.add.existing(ground6);
 		ground6.body.setImmovable(true);
 		ground6.body.moves = false;
+
+
+		this.add.image(-5, 470, "ground1");
+
+		let ground7 = this.add.tileSprite(580, 470, 800, 20, "tile");
+		this.physics.add.existing(ground7);
+		ground7.body.setImmovable(true);
+		ground7.body.moves = false;
+
+		this.add.image(580, 470, "ground3");
+
+		let ground8 = this.add.tileSprite(1450, 470, 800, 20, "tile");
+		this.physics.add.existing(ground8);
+		ground8.body.setImmovable(true);
+		ground8.body.moves = false;
+
+		this.add.image(1450, 470, "ground3");
+
+		let ground9 = this.add.tileSprite(2100, 470, 290, 20, "tile");
+
 		let ground7 = this.add.tileSprite(580, 270, 800, 20, "tile");
 		this.physics.add.existing(ground7);
 		ground7.body.setImmovable(true);
@@ -111,9 +257,12 @@ class Giovanni extends Phaser.Scene {
 		ground8.body.setImmovable(true);
 		ground8.body.moves = false;
 		let ground9 = this.add.tileSprite(2100, 270, 290, 20, "tile");
+
 		this.physics.add.existing(ground9);
 		ground9.body.setImmovable(true);
 		ground9.body.moves = false;
+
+		this.add.image(2100, 470, "ground2");
 
 		///////////////////////////////RECEPTION//////////////////////////////////////
 		let reception = this.add.tileSprite(400, 570, 160, 60, "tile");
@@ -195,10 +344,72 @@ class Giovanni extends Phaser.Scene {
 		this.add.image(1350, 570, "sofa1");
 
 		/////////////////////////////STAIRS////////////////////////////////////////////////
-		let stairs1 = this.add.tileSprite(2200, 575, 50, 50, "tile");
+		/*let stairs1 = this.add.tileSprite(2200, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs1);
 		stairs1.body.setImmovable(true);
 		stairs1.body.moves = false;
+
+
+		this.add.image(2200, 775, "stairs");
+
+		let stairs2 = this.add.tileSprite(2150, 775, 50, 50, "tile");
+		this.physics.add.existing(stairs2);
+		stairs2.body.setImmovable(true);
+		stairs2.body.moves = false;
+
+		this.add.image(2150, 775, "stairs");
+
+		let stairs3 = this.add.tileSprite(2100, 775, 50, 50, "tile");
+		this.physics.add.existing(stairs3);
+		stairs3.body.setImmovable(true);
+		stairs3.body.moves = false;
+
+		this.add.image(2100, 775, "stairs");
+
+		let stairs4 = this.add.tileSprite(2050, 775, 50, 50, "tile");
+		this.physics.add.existing(stairs4);
+		stairs4.body.setImmovable(true);
+		stairs4.body.moves = false;
+
+		this.add.image(2050, 775, "stairs");
+
+		let stairs5 = this.add.tileSprite(2200, 725, 50, 50, "tile");
+		this.physics.add.existing(stairs5);
+		stairs5.body.setImmovable(true);
+		stairs5.body.moves = false;
+
+		this.add.image(2200, 725, "stairs");
+
+		let stairs6 = this.add.tileSprite(2150, 725, 50, 50, "tile");
+		this.physics.add.existing(stairs6);
+		stairs6.body.setImmovable(true);
+		stairs6.body.moves = false;
+
+		this.add.image(2150, 725, "stairs");
+
+		let stairs7 = this.add.tileSprite(2100, 725, 50, 50, "tile");
+		this.physics.add.existing(stairs7);
+		stairs7.body.setImmovable(true);
+		stairs7.body.moves = false;
+
+		this.add.image(2100, 725, "stairs");
+
+		let stairs8 = this.add.tileSprite(2200, 675, 50, 50, "tile");
+		this.physics.add.existing(stairs8);
+		stairs8.body.setImmovable(true);
+		stairs8.body.moves = false;
+
+		this.add.image(2200, 675, "stairs");
+
+		let stairs9 = this.add.tileSprite(2150, 675, 50, 50, "tile");
+		this.physics.add.existing(stairs9);
+		stairs9.body.setImmovable(true);
+		stairs9.body.moves = false;
+
+		this.add.image(2150, 675, "stairs");
+
+		let stairs10 = this.add.tileSprite(2200, 625, 50, 50, "tile");*/
+
 		let stairs2 = this.add.tileSprite(2150, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs2);
 		stairs2.body.setImmovable(true);
@@ -232,9 +443,12 @@ class Giovanni extends Phaser.Scene {
 		stairs9.body.setImmovable(true);
 		stairs9.body.moves = false;
 		let stairs10 = this.add.tileSprite(2200, 425, 50, 50, "tile");
+
 		this.physics.add.existing(stairs10);
 		stairs10.body.setImmovable(true);
 		stairs10.body.moves = false;
+
+		this.add.image(2200, 625, "stairs");
 
 		/////////////////////////RANDOM BLOCKS FOR CLIMBING////////////////////////////////////
 		///////1/////
@@ -242,56 +456,67 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.existing(stairs11);
 		stairs11.body.setImmovable(true);
 		stairs11.body.moves = false;
+		this.add.image(2415, 785, "blocks");
 		////////2/////
 		let stairs12 = this.add.tileSprite(2625, 575, 50, 50, "tile");
 		this.physics.add.existing(stairs12);
 		stairs12.body.setImmovable(true);
 		stairs12.body.moves = false;
+		this.add.image(2625, 775, "blocks");
 		///////3//////
 		let stairs13 = this.add.tileSprite(2310, 535, 50, 50, "tile");
 		this.physics.add.existing(stairs13);
 		stairs13.body.setImmovable(true);
 		stairs13.body.moves = false;
+		this.add.image(2310, 735, "blocks");
 		///////4//////
 		let stairs14 = this.add.tileSprite(2520, 520, 50, 50, "tile");
 		this.physics.add.existing(stairs14);
 		stairs14.body.setImmovable(true);
 		stairs14.body.moves = false;
+		this.add.image(2520, 720, "blocks");
 		////////5//////
 		let stairs15 = this.add.tileSprite(2625, 465, 50, 50, "tile");
 		this.physics.add.existing(stairs15);
 		stairs15.body.setImmovable(true);
 		stairs15.body.moves = false;
+		this.add.image(2625, 665, "blocks");
 		///////6///////
 		let stairs16 = this.add.tileSprite(2520, 400, 50, 50, "tile");
 		this.physics.add.existing(stairs16);
 		stairs16.body.setImmovable(true);
 		stairs16.body.moves = false;
+		this.add.image(2520, 600, "blocks");
 		//////7//////
 		let stairs17 = this.add.tileSprite(2625, 345, 50, 50, "tile");
 		this.physics.add.existing(stairs17);
 		stairs17.body.setImmovable(true);
 		stairs17.body.moves = false;
+		this.add.image(2625, 545, "blocks");
 		//////8/////
 		let stairs18 = this.add.tileSprite(2520, 280, 50, 50, "tile");
 		this.physics.add.existing(stairs18);
 		stairs18.body.setImmovable(true);
 		stairs18.body.moves = false;
+		this.add.image(2520, 480, "blocks");
 		////////9//////
 		let stairs19 = this.add.tileSprite(2415, 475, 50, 50, "tile");
 		this.physics.add.existing(stairs19);
 		stairs19.body.setImmovable(true);
 		stairs19.body.moves = false;
+		this.add.image(2415, 675, "blocks");
 		//////10//////
 		let stairs20 = this.add.tileSprite(2310, 410, 50, 50, "tile");
 		this.physics.add.existing(stairs20);
 		stairs20.body.setImmovable(true);
 		stairs20.body.moves = false;
+		this.add.image(2310, 610, "blocks");
 		//////11/////
 		let stairs21 = this.add.tileSprite(2415, 345, 50, 50, "tile");
 		this.physics.add.existing(stairs21);
 		stairs21.body.setImmovable(true);
 		stairs21.body.moves = false;
+		this.add.image(2415, 545, "blocks");
 
 		//////////////////////////////////////////TABLES/////////////////////////////////////////////
 
@@ -391,6 +616,39 @@ class Giovanni extends Phaser.Scene {
 		this.physics.add.existing(pipe1);
 		pipe1.body.setImmovable(true);
 		pipe1.body.moves = false;
+/*
+		this.add.image(1700, 580, "pipes2");
+
+		let pipe2 = this.add.tileSprite(1500, 580, 60, 200, "tile");
+		this.physics.add.existing(pipe2);
+		pipe2.body.setImmovable(true);
+		pipe2.body.moves = false;
+
+		this.add.image(1501, 580, "pipes2");
+
+		let pipe3 = this.add.tileSprite(1700, 845, 60, 200, "tile");
+		this.physics.add.existing(pipe3);
+		pipe3.body.setImmovable(true);
+		pipe3.body.moves = false;
+
+		this.add.image(1700, 800, "pipes");
+
+		let pipe4 = this.add.tileSprite(1500, 845, 60, 200, "tile");
+		this.physics.add.existing(pipe4);
+		pipe4.body.setImmovable(true);
+		pipe4.body.moves = false;
+
+		this.add.image(1500, 800, "pipes");
+
+		let pipe5 = this.add.tileSprite(250, 445, 60, 60, "tile");
+		this.physics.add.existing(pipe5);
+		pipe5.body.setImmovable(true);
+		pipe5.body.moves = false;
+
+		this.add.image(250, 444, "pipes");
+
+		let pipe6 = this.add.tileSprite(900, 445, 60, 60, "tile");*/
+
 		let pipe2 = this.add.tileSprite(1500, 380, 60, 200, "tile");
 		this.physics.add.existing(pipe2);
 		pipe2.body.setImmovable(true);
@@ -408,9 +666,12 @@ class Giovanni extends Phaser.Scene {
 		pipe5.body.setImmovable(true);
 		pipe5.body.moves = false;
 		let pipe6 = this.add.tileSprite(900, 245, 60, 60, "tile");
+
 		this.physics.add.existing(pipe6);
 		pipe6.body.setImmovable(true);
 		pipe6.body.moves = false;
+
+		this.add.image(900, 444, "pipes");
 
 		giovanniPlayer = this.physics.add.sprite(
 			30,
